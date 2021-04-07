@@ -42,7 +42,7 @@ namespace JungleDiamond
                 //show the corresponding controls
                 switch (functionBox.SelectedItem.ToString())
                 {
-                    case "Load SPS":
+                    case "Load":
                         activePanel.Controls.Clear();
                         activePanel.Controls.Add(LoadBox);
                         LoadBox.Visible = true;
@@ -115,7 +115,7 @@ namespace JungleDiamond
             if (functionBox.SelectedIndex != -1)
                 switch (functionBox.SelectedItem.ToString())
             {
-                case "Load SPS":
+                case "Load":
                     //Nb
                     lvi.Text = scriptList.Items.Count.ToString();
                     //Name

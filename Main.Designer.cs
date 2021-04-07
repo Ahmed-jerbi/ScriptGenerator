@@ -98,10 +98,10 @@
             this.functionBox.ForeColor = System.Drawing.SystemColors.Window;
             this.functionBox.FormattingEnabled = true;
             this.functionBox.Items.AddRange(new object[] {
-            "Load SPS",
+            "Load",
+            "Save",
             "Copy/transfer",
             "Wait",
-            "Save",
             "Recalibrate",
             "Add VC to display Geometry",
             "Custom content space conversion",
