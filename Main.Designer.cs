@@ -72,6 +72,20 @@
             this.compoundCCSText = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.resetButton = new System.Windows.Forms.Button();
+            this.RecalBlendBox = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.compoundBlendText = new System.Windows.Forms.TextBox();
+            this.ExportBox = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.compoundExpText = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.expFormat = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.expPath = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.expName = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             this.CopyBox.SuspendLayout();
@@ -79,6 +93,9 @@
             this.RecalibBox.SuspendLayout();
             this.AddVcBox.SuspendLayout();
             this.CCSBox.SuspendLayout();
+            this.RecalBlendBox.SuspendLayout();
+            this.ExportBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // fLabel
@@ -103,12 +120,9 @@
             "Copy/transfer",
             "Wait",
             "Recalibrate",
+            "Recalculate Blending [3D]",
             "Add VC to display Geometry",
             "Custom content space conversion",
-            "Blending recalculation [3D]",
-            "Blending adjustment standard ",
-            "Blending adjustment spline",
-            "Export via script ",
             "Export"});
             this.functionBox.Location = new System.Drawing.Point(49, 159);
             this.functionBox.Name = "functionBox";
@@ -118,7 +132,7 @@
             // 
             // scriptList
             // 
-            this.scriptList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(102)))), ((int)(((byte)(145)))));
+            this.scriptList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(110)))), ((int)(((byte)(160)))));
             this.scriptList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scriptList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nbCol,
@@ -128,33 +142,34 @@
             this.scriptList.HideSelection = false;
             this.scriptList.Location = new System.Drawing.Point(433, 21);
             this.scriptList.Name = "scriptList";
-            this.scriptList.Size = new System.Drawing.Size(700, 330);
+            this.scriptList.Size = new System.Drawing.Size(610, 330);
             this.scriptList.TabIndex = 12;
             this.scriptList.UseCompatibleStateImageBehavior = false;
             this.scriptList.View = System.Windows.Forms.View.Details;
             // 
             // nbCol
             // 
-            this.nbCol.Text = "     Nb";
+            this.nbCol.Text = " Nb";
+            this.nbCol.Width = 36;
             // 
             // nameCol
             // 
             this.nameCol.Text = "Name";
             this.nameCol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nameCol.Width = 130;
+            this.nameCol.Width = 147;
             // 
             // argCol
             // 
             this.argCol.Text = "Arguments";
             this.argCol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.argCol.Width = 499;
+            this.argCol.Width = 425;
             // 
             // activePanel
             // 
             this.activePanel.BackColor = System.Drawing.Color.Transparent;
             this.activePanel.Location = new System.Drawing.Point(49, 197);
             this.activePanel.Name = "activePanel";
-            this.activePanel.Size = new System.Drawing.Size(267, 142);
+            this.activePanel.Size = new System.Drawing.Size(267, 193);
             this.activePanel.TabIndex = 13;
             // 
             // addButton
@@ -164,7 +179,7 @@
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.addButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(340, 197);
+            this.addButton.Location = new System.Drawing.Point(340, 224);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(56, 44);
             this.addButton.TabIndex = 9;
@@ -372,7 +387,7 @@
             this.generateScript.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.generateScript.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generateScript.ForeColor = System.Drawing.Color.White;
-            this.generateScript.Location = new System.Drawing.Point(1020, 396);
+            this.generateScript.Location = new System.Drawing.Point(919, 396);
             this.generateScript.Name = "generateScript";
             this.generateScript.Size = new System.Drawing.Size(113, 44);
             this.generateScript.TabIndex = 17;
@@ -530,7 +545,7 @@
             // 
             this.resetButton.BackColor = System.Drawing.Color.Transparent;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.resetButton.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.ForeColor = System.Drawing.Color.LightSteelBlue;
             this.resetButton.Location = new System.Drawing.Point(52, 396);
             this.resetButton.Name = "resetButton";
@@ -540,12 +555,161 @@
             this.resetButton.UseVisualStyleBackColor = false;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
+            // RecalBlendBox
+            // 
+            this.RecalBlendBox.Controls.Add(this.label16);
+            this.RecalBlendBox.Controls.Add(this.compoundBlendText);
+            this.RecalBlendBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.RecalBlendBox.Location = new System.Drawing.Point(587, 473);
+            this.RecalBlendBox.Name = "RecalBlendBox";
+            this.RecalBlendBox.Size = new System.Drawing.Size(229, 75);
+            this.RecalBlendBox.TabIndex = 18;
+            this.RecalBlendBox.TabStop = false;
+            this.RecalBlendBox.Text = "Recalculate Blending [3D]";
+            this.RecalBlendBox.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(97, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Compound Name";
+            // 
+            // compoundBlendText
+            // 
+            this.compoundBlendText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundBlendText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundBlendText.Location = new System.Drawing.Point(15, 42);
+            this.compoundBlendText.Name = "compoundBlendText";
+            this.compoundBlendText.Size = new System.Drawing.Size(206, 22);
+            this.compoundBlendText.TabIndex = 0;
+            // 
+            // ExportBox
+            // 
+            this.ExportBox.Controls.Add(this.label19);
+            this.ExportBox.Controls.Add(this.expName);
+            this.ExportBox.Controls.Add(this.label20);
+            this.ExportBox.Controls.Add(this.expPath);
+            this.ExportBox.Controls.Add(this.label18);
+            this.ExportBox.Controls.Add(this.expFormat);
+            this.ExportBox.Controls.Add(this.label17);
+            this.ExportBox.Controls.Add(this.compoundExpText);
+            this.ExportBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ExportBox.Location = new System.Drawing.Point(587, 561);
+            this.ExportBox.Name = "ExportBox";
+            this.ExportBox.Size = new System.Drawing.Size(229, 189);
+            this.ExportBox.TabIndex = 19;
+            this.ExportBox.TabStop = false;
+            this.ExportBox.Text = "Export";
+            this.ExportBox.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "Compound Name";
+            // 
+            // compoundExpText
+            // 
+            this.compoundExpText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundExpText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundExpText.Location = new System.Drawing.Point(15, 42);
+            this.compoundExpText.Name = "compoundExpText";
+            this.compoundExpText.Size = new System.Drawing.Size(206, 22);
+            this.compoundExpText.TabIndex = 0;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(178, 80);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Format";
+            // 
+            // expFormat
+            // 
+            this.expFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.expFormat.ForeColor = System.Drawing.SystemColors.Window;
+            this.expFormat.Location = new System.Drawing.Point(181, 100);
+            this.expFormat.Name = "expFormat";
+            this.expFormat.Size = new System.Drawing.Size(40, 22);
+            this.expFormat.TabIndex = 8;
+            this.expFormat.Text = "vwf";
+            this.expFormat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(12, 128);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 13);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Destination";
+            // 
+            // expPath
+            // 
+            this.expPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.expPath.ForeColor = System.Drawing.SystemColors.Window;
+            this.expPath.Location = new System.Drawing.Point(15, 147);
+            this.expPath.Name = "expPath";
+            this.expPath.Size = new System.Drawing.Size(206, 22);
+            this.expPath.TabIndex = 12;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(14, 84);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(57, 13);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "File Name";
+            // 
+            // expName
+            // 
+            this.expName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.expName.ForeColor = System.Drawing.SystemColors.Window;
+            this.expName.Location = new System.Drawing.Point(17, 100);
+            this.expName.Name = "expName";
+            this.expName.Size = new System.Drawing.Size(158, 22);
+            this.expName.TabIndex = 14;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::VIOSOScriptGenerator.Properties.Resources.Logo_VIOSO_trans;
+            this.pictureBox1.Location = new System.Drawing.Point(67, 31);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(249, 54);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.ForestGreen;
+            this.titleLabel.Location = new System.Drawing.Point(105, 88);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(186, 20);
+            this.titleLabel.TabIndex = 21;
+            this.titleLabel.Text = "SCRIPT GENERATOR V0000";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1155, 460);
+            this.ClientSize = new System.Drawing.Size(1052, 459);
+            this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.ExportBox);
+            this.Controls.Add(this.RecalBlendBox);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.CCSBox);
             this.Controls.Add(this.AddVcBox);
@@ -582,6 +746,11 @@
             this.AddVcBox.PerformLayout();
             this.CCSBox.ResumeLayout(false);
             this.CCSBox.PerformLayout();
+            this.RecalBlendBox.ResumeLayout(false);
+            this.RecalBlendBox.PerformLayout();
+            this.ExportBox.ResumeLayout(false);
+            this.ExportBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,6 +800,20 @@
         private System.Windows.Forms.TextBox compoundCCSText;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.GroupBox RecalBlendBox;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox compoundBlendText;
+        private System.Windows.Forms.GroupBox ExportBox;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox expPath;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox expFormat;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox compoundExpText;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox expName;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label titleLabel;
     }
 }
 

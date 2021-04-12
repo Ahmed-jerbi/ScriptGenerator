@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="kreis_1aL_icon.ico" />
+    <None Include="Resources\Logo_VIOSO_trans.png" />
     <None Include="Resources\kreis2.png" />
   </ItemGroup>
   <ItemGroup />
