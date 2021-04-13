@@ -168,8 +168,11 @@ namespace JungleDiamond
                     lvi.SubItems.Add(waitText.Text +" ms");
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
-                    // XML elements
-                    break;
+                        // XML elements
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "Timer"), new XAttribute("subtype", "Sleep"), new XAttribute("use", lvi.Text)));
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "common"),
+                                new XElement("param", new XAttribute("duration", waitText.Text))));
+                        break;
 
                 case "Save":
                     //Nb
@@ -182,6 +185,10 @@ namespace JungleDiamond
                     scriptList.Items.Add(lvi);
                     //clear panel
                     activePanel.Controls.Clear();
+                    //XML elements
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "save"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text)));
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "common"),
+                        new XElement("param", new XAttribute("file", saveText.Text + ".sps"))));
                     break;
                 case "Recalibrate":
                     //Nb
@@ -189,10 +196,19 @@ namespace JungleDiamond
                     //Name
                     lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                     //argument
-                    lvi.SubItems.Add(compoundText.Text+", [Interaction: "+InteractBox.SelectedItem.ToString()+"]");
+                    lvi.SubItems.Add(compoundRecalText.Text+", [Interaction: "+InteractBox.SelectedItem.ToString()+"]");
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
-                    break;
+                    //XML elements
+                        //tasks
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Recalib"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text)));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Recalib"), new XAttribute("state", "finished")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "Timer"), new XAttribute("subtype", "Sleep"), new XAttribute("use", "stdWait")));
+                        //define
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "BehaviourCreate"),
+                                new XElement("param", new XAttribute("interactLevel",InteractBox.SelectedItem.ToString())),
+                                new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", compoundRecalText.Text))));
+                        break;
                 case "Recalculate Blending [3D]":
                     //Nb
                     lvi.Text = scriptList.Items.Count.ToString();
@@ -202,6 +218,38 @@ namespace JungleDiamond
                     lvi.SubItems.Add(compoundBlendText.Text);
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
+                    //XML elements
+                        //tasks
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "BlendCal"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text)));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCal"), new XAttribute("state", "Interact.DeviceSel")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "BlendCal"), new XAttribute("state", "DeviceSel"), new XAttribute("use", lvi.Text+".Rb")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("name", "BlendCalc"), new XAttribute("type", "progress")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCalc"), new XAttribute("state", "finished")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+                        //define
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "BehaviourCreate"),
+                                new XElement("param", new XAttribute("interactLevel", "many,noFinalResult")),
+                                new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", compoundBlendText.Text))));
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Rb"), new XAttribute("type", "SC_DevSel"),
+                                new XElement("param", new XAttribute("tCalib", "preceeding"), new XAttribute("tArrangement", "hstrip"), new XAttribute("calibName", compoundBlendText.Text+"_Reblended"))));
+                    break;
+                case "Add VC to display Geometry":
+                    //Nb
+                    lvi.Text = scriptList.Items.Count.ToString();
+                    //Name
+                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                    //argument
+                    lvi.SubItems.Add(compoundVCText.Text);
+                    //--> add the ScriptList
+                    scriptList.Items.Add(lvi);
+                    //XML elements
+                    //tasks not complete
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "ContentSpace"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "Interact.Convert")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "ConvertConfig")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "ContentSpace")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "finished")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
                     break;
                 case "Custom content space conversion":
                     //Nb
@@ -237,11 +285,14 @@ namespace JungleDiamond
 
         
 /// <summary>
-/// Generates the XML document
+/// Generates and saves the XML document
 /// </summary>
         private void generateScript_Click(object sender, EventArgs e)
         {
-
+            //generate common XML elements
+            xdoc.Root.Add(new XElement("define", new XAttribute("name", "stdWait"), new XAttribute("type", "common"),
+            new XElement("param", new XAttribute("duration", "3000"))));
+            //SAVE dialog
             saveFileDialog1.ShowDialog();
             //Write XML file with UTF8 and no BOM
             XmlWriterSettings settings = new XmlWriterSettings();

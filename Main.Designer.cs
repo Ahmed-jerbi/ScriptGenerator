@@ -61,7 +61,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.InteractBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.compoundText = new System.Windows.Forms.TextBox();
+            this.compoundRecalText = new System.Windows.Forms.TextBox();
             this.AddVcBox = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.compoundVCText = new System.Windows.Forms.TextBox();
@@ -76,14 +76,14 @@
             this.label16 = new System.Windows.Forms.Label();
             this.compoundBlendText = new System.Windows.Forms.TextBox();
             this.ExportBox = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.compoundExpText = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.expFormat = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.expPath = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.expName = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.expPath = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.expFormat = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.compoundExpText = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.LoadBox.SuspendLayout();
@@ -139,11 +139,14 @@
             this.nameCol,
             this.argCol});
             this.scriptList.ForeColor = System.Drawing.SystemColors.Window;
+            this.scriptList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.scriptList.HideSelection = false;
-            this.scriptList.Location = new System.Drawing.Point(433, 21);
+            this.scriptList.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.scriptList.Location = new System.Drawing.Point(430, 24);
             this.scriptList.Name = "scriptList";
-            this.scriptList.Size = new System.Drawing.Size(610, 330);
+            this.scriptList.Size = new System.Drawing.Size(610, 366);
             this.scriptList.TabIndex = 12;
+            this.scriptList.TabStop = false;
             this.scriptList.UseCompatibleStateImageBehavior = false;
             this.scriptList.View = System.Windows.Forms.View.Details;
             // 
@@ -156,13 +159,13 @@
             // 
             this.nameCol.Text = "Name";
             this.nameCol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nameCol.Width = 147;
+            this.nameCol.Width = 163;
             // 
             // argCol
             // 
             this.argCol.Text = "Arguments";
             this.argCol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.argCol.Width = 425;
+            this.argCol.Width = 410;
             // 
             // activePanel
             // 
@@ -387,7 +390,7 @@
             this.generateScript.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.generateScript.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generateScript.ForeColor = System.Drawing.Color.White;
-            this.generateScript.Location = new System.Drawing.Point(919, 396);
+            this.generateScript.Location = new System.Drawing.Point(927, 409);
             this.generateScript.Name = "generateScript";
             this.generateScript.Size = new System.Drawing.Size(113, 44);
             this.generateScript.TabIndex = 17;
@@ -400,7 +403,7 @@
             this.RecalibBox.Controls.Add(this.label11);
             this.RecalibBox.Controls.Add(this.InteractBox);
             this.RecalibBox.Controls.Add(this.label12);
-            this.RecalibBox.Controls.Add(this.compoundText);
+            this.RecalibBox.Controls.Add(this.compoundRecalText);
             this.RecalibBox.ForeColor = System.Drawing.SystemColors.Window;
             this.RecalibBox.Location = new System.Drawing.Point(327, 463);
             this.RecalibBox.Name = "RecalibBox";
@@ -444,14 +447,14 @@
             this.label12.TabIndex = 7;
             this.label12.Text = "Compound Name";
             // 
-            // compoundText
+            // compoundRecalText
             // 
-            this.compoundText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.compoundText.ForeColor = System.Drawing.SystemColors.Window;
-            this.compoundText.Location = new System.Drawing.Point(15, 41);
-            this.compoundText.Name = "compoundText";
-            this.compoundText.Size = new System.Drawing.Size(206, 22);
-            this.compoundText.TabIndex = 0;
+            this.compoundRecalText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundRecalText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundRecalText.Location = new System.Drawing.Point(15, 41);
+            this.compoundRecalText.Name = "compoundRecalText";
+            this.compoundRecalText.Size = new System.Drawing.Size(206, 22);
+            this.compoundRecalText.TabIndex = 0;
             // 
             // AddVcBox
             // 
@@ -547,7 +550,7 @@
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.resetButton.Location = new System.Drawing.Point(52, 396);
+            this.resetButton.Location = new System.Drawing.Point(52, 409);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(54, 44);
             this.resetButton.TabIndex = 19;
@@ -605,23 +608,41 @@
             this.ExportBox.Text = "Export";
             this.ExportBox.Visible = false;
             // 
-            // label17
+            // label19
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 22);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(97, 13);
-            this.label17.TabIndex = 7;
-            this.label17.Text = "Compound Name";
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(14, 84);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(57, 13);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "File Name";
             // 
-            // compoundExpText
+            // expName
             // 
-            this.compoundExpText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.compoundExpText.ForeColor = System.Drawing.SystemColors.Window;
-            this.compoundExpText.Location = new System.Drawing.Point(15, 42);
-            this.compoundExpText.Name = "compoundExpText";
-            this.compoundExpText.Size = new System.Drawing.Size(206, 22);
-            this.compoundExpText.TabIndex = 0;
+            this.expName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.expName.ForeColor = System.Drawing.SystemColors.Window;
+            this.expName.Location = new System.Drawing.Point(17, 100);
+            this.expName.Name = "expName";
+            this.expName.Size = new System.Drawing.Size(158, 22);
+            this.expName.TabIndex = 14;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(12, 128);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 13);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Destination";
+            // 
+            // expPath
+            // 
+            this.expPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.expPath.ForeColor = System.Drawing.SystemColors.Window;
+            this.expPath.Location = new System.Drawing.Point(15, 147);
+            this.expPath.Name = "expPath";
+            this.expPath.Size = new System.Drawing.Size(206, 22);
+            this.expPath.TabIndex = 12;
             // 
             // label18
             // 
@@ -643,46 +664,28 @@
             this.expFormat.Text = "vwf";
             this.expFormat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label20
+            // label17
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(12, 128);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(67, 13);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Destination";
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 22);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 13);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "Compound Name";
             // 
-            // expPath
+            // compoundExpText
             // 
-            this.expPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.expPath.ForeColor = System.Drawing.SystemColors.Window;
-            this.expPath.Location = new System.Drawing.Point(15, 147);
-            this.expPath.Name = "expPath";
-            this.expPath.Size = new System.Drawing.Size(206, 22);
-            this.expPath.TabIndex = 12;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(14, 84);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 13);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "File Name";
-            // 
-            // expName
-            // 
-            this.expName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.expName.ForeColor = System.Drawing.SystemColors.Window;
-            this.expName.Location = new System.Drawing.Point(17, 100);
-            this.expName.Name = "expName";
-            this.expName.Size = new System.Drawing.Size(158, 22);
-            this.expName.TabIndex = 14;
+            this.compoundExpText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundExpText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundExpText.Location = new System.Drawing.Point(15, 42);
+            this.compoundExpText.Name = "compoundExpText";
+            this.compoundExpText.Size = new System.Drawing.Size(206, 22);
+            this.compoundExpText.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::VIOSOScriptGenerator.Properties.Resources.Logo_VIOSO_trans;
-            this.pictureBox1.Location = new System.Drawing.Point(67, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(67, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(249, 54);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -694,7 +697,7 @@
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.titleLabel.Location = new System.Drawing.Point(105, 88);
+            this.titleLabel.Location = new System.Drawing.Point(102, 81);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(186, 20);
             this.titleLabel.TabIndex = 21;
@@ -705,7 +708,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1052, 459);
+            this.ClientSize = new System.Drawing.Size(1052, 466);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ExportBox);
@@ -727,7 +730,6 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Opacity = 0.98D;
@@ -787,7 +789,7 @@
         private System.Windows.Forms.Button generateScript;
         private System.Windows.Forms.GroupBox RecalibBox;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox compoundText;
+        private System.Windows.Forms.TextBox compoundRecalText;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox InteractBox;
         private System.Windows.Forms.GroupBox AddVcBox;
