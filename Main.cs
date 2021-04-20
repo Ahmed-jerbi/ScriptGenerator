@@ -341,9 +341,23 @@ namespace JungleDiamond
 
         }
 
-/// <summary>
-/// Reset the GUI and XML
- /// </summary>
+        /// <summary>
+        /// Open a folder browser dialog and return the selected path, but only if the OK button was pressed else an empty String is returned.
+        /// </summary>
+        private String showSelectFolderDialog() {
+            DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
+            String selectedPath = String.Empty;
+
+            if (dialogResult == DialogResult.OK) {
+                selectedPath = folderBrowserDialog1.SelectedPath;
+            }
+
+            return selectedPath;
+        }
+
+        /// <summary>
+        /// Reset the GUI and XML
+        /// </summary>
         private void resetButton_Click(object sender, EventArgs e)
         {
             xdoc.Root.RemoveAll();
@@ -355,8 +369,12 @@ namespace JungleDiamond
 
         private void btnSelectExportDestination_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            expPath.Text = folderBrowserDialog1.SelectedPath;
+            String selectedPath = showSelectFolderDialog();
+            if (selectedPath.Length > 0)
+            {
+                expPath.Text = selectedPath;
+            }
         }
+
     }
 }
