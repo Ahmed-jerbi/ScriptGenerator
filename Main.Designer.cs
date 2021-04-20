@@ -76,6 +76,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.compoundBlendText = new System.Windows.Forms.TextBox();
             this.ExportBox = new System.Windows.Forms.GroupBox();
+            this.btnSelectExportDestination = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.expName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -86,6 +87,7 @@
             this.compoundExpText = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             this.CopyBox.SuspendLayout();
@@ -550,7 +552,7 @@
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.resetButton.Location = new System.Drawing.Point(52, 409);
+            this.resetButton.Location = new System.Drawing.Point(849, 409);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(54, 44);
             this.resetButton.TabIndex = 19;
@@ -563,7 +565,7 @@
             this.RecalBlendBox.Controls.Add(this.label16);
             this.RecalBlendBox.Controls.Add(this.compoundBlendText);
             this.RecalBlendBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.RecalBlendBox.Location = new System.Drawing.Point(587, 473);
+            this.RecalBlendBox.Location = new System.Drawing.Point(587, 470);
             this.RecalBlendBox.Name = "RecalBlendBox";
             this.RecalBlendBox.Size = new System.Drawing.Size(229, 75);
             this.RecalBlendBox.TabIndex = 18;
@@ -591,6 +593,7 @@
             // 
             // ExportBox
             // 
+            this.ExportBox.Controls.Add(this.btnSelectExportDestination);
             this.ExportBox.Controls.Add(this.label19);
             this.ExportBox.Controls.Add(this.expName);
             this.ExportBox.Controls.Add(this.label20);
@@ -607,6 +610,20 @@
             this.ExportBox.TabStop = false;
             this.ExportBox.Text = "Export";
             this.ExportBox.Visible = false;
+            // 
+            // btnSelectExportDestination
+            // 
+            this.btnSelectExportDestination.BackColor = System.Drawing.Color.Transparent;
+            this.btnSelectExportDestination.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectExportDestination.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectExportDestination.ForeColor = System.Drawing.Color.White;
+            this.btnSelectExportDestination.Location = new System.Drawing.Point(149, 147);
+            this.btnSelectExportDestination.Name = "btnSelectExportDestination";
+            this.btnSelectExportDestination.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectExportDestination.TabIndex = 16;
+            this.btnSelectExportDestination.Text = "Select";
+            this.btnSelectExportDestination.UseVisualStyleBackColor = false;
+            this.btnSelectExportDestination.Click += new System.EventHandler(this.btnSelectExportDestination_Click);
             // 
             // label19
             // 
@@ -641,7 +658,7 @@
             this.expPath.ForeColor = System.Drawing.SystemColors.Window;
             this.expPath.Location = new System.Drawing.Point(15, 147);
             this.expPath.Name = "expPath";
-            this.expPath.Size = new System.Drawing.Size(206, 22);
+            this.expPath.Size = new System.Drawing.Size(128, 22);
             this.expPath.TabIndex = 12;
             // 
             // label18
@@ -708,7 +725,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1052, 466);
+            this.ClientSize = new System.Drawing.Size(1053, 464);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ExportBox);
@@ -816,6 +833,8 @@
         private System.Windows.Forms.TextBox expName;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Button btnSelectExportDestination;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

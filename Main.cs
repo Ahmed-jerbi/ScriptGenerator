@@ -243,13 +243,18 @@ namespace JungleDiamond
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
                     //XML elements
-                    //tasks not complete
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "ContentSpace"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "Interact.Convert")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "ConvertConfig")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "ContentSpace")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "finished")));
+                        //tasks
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "Interact.Convert")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".AddVC")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "AddVCtoP2C")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "finished")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+
+                        //define
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".AddVC"), new XAttribute("type", "CalibCommerce"),
+                                     new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundVCText.Text)),
+                                     new XElement("param", new XAttribute("tConvert", "add vc to P2C"))));
                     break;
                 case "Custom content space conversion":
                     //Nb
@@ -260,16 +265,47 @@ namespace JungleDiamond
                     lvi.SubItems.Add(compoundCCSText.Text+", Space: "+ccsText.Text);
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
+
+                    //XML Elements
+                    //Tasks
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "ContentSpace"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "Interact.Convert")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".CCS_BLOCK")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "ContentSpace")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "finished")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+
+                    //define
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".CCS_BLOCK"), new XAttribute("type", "CalibCommerce"),
+                                    new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundCCSText.Text)),
+                                    new XElement("param", new XAttribute("tConvert", "custom content space conversion"), new XAttribute("customContentSpace", ccsText.Text))
+                                  ));
+
                     break;
                 case "Export":
+
+                    String fullPath = expPath.Text + @"\" + expName.Text + "." + expFormat.Text;
+
                     //Nb
                     lvi.Text = scriptList.Items.Count.ToString();
                     //Name
                     lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                     //argument
-                    lvi.SubItems.Add(compoundExpText.Text+", "+expPath.Text+@"\"+expName.Text+"."+expFormat.Text);
+                    lvi.SubItems.Add(compoundExpText.Text + ", " + fullPath);
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
+  
+                    //XML Elements
+                    //Task
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Export1"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "export")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "Interact.Export")));
+                    xdoc.Root.Add(new XElement("taks", new XAttribute("action", "configure"), new XAttribute("name", "Export1"), new XAttribute("state", "ExportConfig"),
+                                    new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundExpText.Text)),
+                                    new XElement("param", new XAttribute("tConvert", expFormat.Text), new XAttribute("path", fullPath), new XAttribute("name", expName.Text), new XAttribute("bSplitDisplays", "1"), new XAttribute("bExactFileName", "1"))
+                                  ));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "Export1")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "finished")));
+                        
                     break;
 
                 default:
@@ -315,6 +351,12 @@ namespace JungleDiamond
             addButton.Enabled = false;
             activePanel.Controls.Clear();
             functionBox.SelectedIndex = -1;
+        }
+
+        private void btnSelectExportDestination_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            expPath.Text = folderBrowserDialog1.SelectedPath;
         }
     }
 }
