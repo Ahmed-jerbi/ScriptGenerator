@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace JungleDiamond
 {
@@ -11,6 +12,8 @@ namespace JungleDiamond
     {
         // Declaring global variables
         public XDocument xdoc = new XDocument(new XDeclaration("1.0", "utf-8",null ),new XElement("VIOSO"));
+
+        private List<String> validationErrorList = new List<string>;
         public Main()
         {
             InitializeComponent();
@@ -134,13 +137,13 @@ namespace JungleDiamond
                     //Name
                     lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                     //argument
-                    lvi.SubItems.Add(loadText.Text+".sps");
+                    lvi.SubItems.Add(loadText.Text);
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
                     //XML elements
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "Load"), new XAttribute("name", "calib"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text)));
                     xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "common"),
-                        new XElement("param", new XAttribute("file", loadText.Text + ".sps"))));
+                        new XElement("param", new XAttribute("file", loadText.Text))));
                     break;
 
                 case "Copy/transfer":
@@ -165,13 +168,13 @@ namespace JungleDiamond
                     //Name
                     lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                     //argument
-                    lvi.SubItems.Add(waitText.Text +" ms");
+                    lvi.SubItems.Add(waitDuration.Text + " ms");
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
                         // XML elements
                         xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "Timer"), new XAttribute("subtype", "Sleep"), new XAttribute("use", lvi.Text)));
                         xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "common"),
-                                new XElement("param", new XAttribute("duration", waitText.Text))));
+                                new XElement("param", new XAttribute("duration", waitDuration.Text))));
                         break;
 
                 case "Save":
@@ -234,6 +237,12 @@ namespace JungleDiamond
                                 new XElement("param", new XAttribute("tCalib", "preceeding"), new XAttribute("tArrangement", "hstrip"), new XAttribute("calibName", compoundBlendText.Text+"_Reblended"))));
                     break;
                 case "Add VC to display Geometry":
+
+                    if (validationErrorList.Count != 0)
+                    {
+                        //TODO: Show Validation Error
+                    }
+
                     //Nb
                     lvi.Text = scriptList.Items.Count.ToString();
                     //Name
@@ -329,30 +338,63 @@ namespace JungleDiamond
             xdoc.Root.Add(new XElement("define", new XAttribute("name", "stdWait"), new XAttribute("type", "common"),
             new XElement("param", new XAttribute("duration", "3000"))));
             //SAVE dialog
-            saveFileDialog1.ShowDialog();
-            //Write XML file with UTF8 and no BOM
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Encoding = new UTF8Encoding(false); // do not emit the BOM.
-            settings.Indent = true; 
-            using (XmlWriter w = XmlWriter.Create(saveFileDialog1.FileName, settings))
+            String saveFileName = String.Empty;
+            if (showSaveFileDialog(ref saveFileName)) 
             {
-                xdoc.Save(w);
+                //Write XML file with UTF8 and no BOM
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Encoding = new UTF8Encoding(false); // do not emit the BOM.
+                settings.Indent = true; 
+                using (XmlWriter w = XmlWriter.Create(saveFileName, settings))
+                {
+                    xdoc.Save(w);
+                }
             }
 
+        }
+
+        private bool showSaveFileDialog(ref String saveFile)
+        {
+            DialogResult dialogResult = saveFileDialog1.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                saveFile = saveFileDialog1.FileName;
+            }
+
+            return saveFile.Length > 0;
         }
 
         /// <summary>
         /// Open a folder browser dialog and return the selected path, but only if the OK button was pressed else an empty String is returned.
         /// </summary>
-        private String showSelectFolderDialog() {
+        private bool showSelectFolderDialog(ref String selectedPath) 
+        {
             DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
-            String selectedPath = String.Empty;
-
-            if (dialogResult == DialogResult.OK) {
+            
+            if (dialogResult == DialogResult.OK) 
+            {
                 selectedPath = folderBrowserDialog1.SelectedPath;
             }
 
-            return selectedPath;
+            return selectedPath.Length > 0;
+        }
+
+        private bool showSelectFileDialog(ref String selectedFile)
+        {
+            openFileDialog1.Filter = "VIOSO files (*.sps)|*.sps|All Files (*.*)|*.*";
+            openFileDialog1.Title = "Select File";
+            openFileDialog1.FileName = "";
+            DialogResult dialogResult = openFileDialog1.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                String fileName = openFileDialog1.FileName;
+                int index = fileName.LastIndexOf("\\") + 1;
+                selectedFile = fileName.Substring(index);
+            }
+
+            return selectedFile.Length > 0;
         }
 
         /// <summary>
@@ -360,6 +402,7 @@ namespace JungleDiamond
         /// </summary>
         private void resetButton_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("Reset");
             xdoc.Root.RemoveAll();
             scriptList.Items.Clear();
             addButton.Enabled = false;
@@ -369,12 +412,57 @@ namespace JungleDiamond
 
         private void btnSelectExportDestination_Click(object sender, EventArgs e)
         {
-            String selectedPath = showSelectFolderDialog();
-            if (selectedPath.Length > 0)
+            String selectedPath = String.Empty;
+            if (showSelectFolderDialog(ref selectedPath))
             {
                 expPath.Text = selectedPath;
             }
         }
 
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            String selectedFile = String.Empty;
+            if (showSelectFileDialog(ref selectedFile))
+            {
+                loadText.Text = selectedFile;
+            }
+        }
+
+        private void btnBrowseSourceTransfer_Click(object sender, EventArgs e)
+        {
+            String selectedFile = String.Empty;
+            if (showSelectFileDialog(ref selectedFile))
+            {
+                srcText.Text = selectedFile;
+            }
+        }
+
+        private void btnBrowseDestinationTransfer_Click(object sender, EventArgs e)
+        {
+            String destinationFile = String.Empty;
+            if (showSaveFileDialog(ref destinationFile))
+            {
+                srcText.Text = destinationFile;
+            }
+        }
+
+        private void compoundVCText_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Console.WriteLine("Validate CompoundVCText " + compoundVCText.Text.Length);
+            if (compoundVCText.Text.Length == 0)
+            {
+                Console.WriteLine("Invalid Input");
+                e.Cancel = true;
+                compoundVCText.Select();
+                errorProvider1.SetError(compoundVCText, "Compound Name can't be empty!");
+
+                validationErrorList.Add("Compound Name Invalid");
+            }
+        }
+
+        private void compoundVCText_TextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(compoundVCText.Text);
+        }
     }
 }
