@@ -39,13 +39,17 @@
             this.activePanel = new System.Windows.Forms.Panel();
             this.addButton = new System.Windows.Forms.Button();
             this.LoadBox = new System.Windows.Forms.GroupBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.loadText = new System.Windows.Forms.TextBox();
             this.WaitBox = new System.Windows.Forms.GroupBox();
+            this.waitDuration = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.CopyBox = new System.Windows.Forms.GroupBox();
+            this.btnBrowseDestinationTransfer = new System.Windows.Forms.Button();
+            this.btnBrowseSourceTransfer = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.destText = new System.Windows.Forms.TextBox();
@@ -88,14 +92,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnBrowseSourceTransfer = new System.Windows.Forms.Button();
-            this.btnBrowseDestinationTransfer = new System.Windows.Forms.Button();
-            this.waitDuration = new System.Windows.Forms.NumericUpDown();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
             this.CopyBox.SuspendLayout();
             this.saveBox.SuspendLayout();
             this.RecalibBox.SuspendLayout();
@@ -104,7 +105,6 @@
             this.RecalBlendBox.SuspendLayout();
             this.ExportBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -215,6 +215,19 @@
             this.LoadBox.Text = "Load";
             this.LoadBox.Visible = false;
             // 
+            // btnLoad
+            // 
+            this.btnLoad.BackColor = System.Drawing.Color.Transparent;
+            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoad.ForeColor = System.Drawing.Color.White;
+            this.btnLoad.Location = new System.Drawing.Point(169, 38);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(57, 22);
+            this.btnLoad.TabIndex = 22;
+            this.btnLoad.Text = "Browse";
+            this.btnLoad.UseVisualStyleBackColor = false;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -256,6 +269,23 @@
             this.WaitBox.Text = "Wait";
             this.WaitBox.Visible = false;
             // 
+            // waitDuration
+            // 
+            this.waitDuration.Location = new System.Drawing.Point(15, 51);
+            this.waitDuration.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.waitDuration.Name = "waitDuration";
+            this.waitDuration.Size = new System.Drawing.Size(56, 22);
+            this.waitDuration.TabIndex = 22;
+            this.waitDuration.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -292,6 +322,30 @@
             this.CopyBox.TabStop = false;
             this.CopyBox.Text = "Copy/transfer";
             this.CopyBox.Visible = false;
+            // 
+            // btnBrowseDestinationTransfer
+            // 
+            this.btnBrowseDestinationTransfer.BackColor = System.Drawing.Color.Transparent;
+            this.btnBrowseDestinationTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowseDestinationTransfer.Location = new System.Drawing.Point(157, 93);
+            this.btnBrowseDestinationTransfer.Name = "btnBrowseDestinationTransfer";
+            this.btnBrowseDestinationTransfer.Size = new System.Drawing.Size(61, 23);
+            this.btnBrowseDestinationTransfer.TabIndex = 13;
+            this.btnBrowseDestinationTransfer.Text = "Browse";
+            this.btnBrowseDestinationTransfer.UseVisualStyleBackColor = false;
+            this.btnBrowseDestinationTransfer.Click += new System.EventHandler(this.btnBrowseDestinationTransfer_Click);
+            // 
+            // btnBrowseSourceTransfer
+            // 
+            this.btnBrowseSourceTransfer.BackColor = System.Drawing.Color.Transparent;
+            this.btnBrowseSourceTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowseSourceTransfer.Location = new System.Drawing.Point(157, 44);
+            this.btnBrowseSourceTransfer.Name = "btnBrowseSourceTransfer";
+            this.btnBrowseSourceTransfer.Size = new System.Drawing.Size(61, 23);
+            this.btnBrowseSourceTransfer.TabIndex = 12;
+            this.btnBrowseSourceTransfer.Text = "Browse";
+            this.btnBrowseSourceTransfer.UseVisualStyleBackColor = false;
+            this.btnBrowseSourceTransfer.Click += new System.EventHandler(this.btnBrowseSourceTransfer_Click);
             // 
             // label6
             // 
@@ -490,8 +544,6 @@
             this.compoundVCText.Name = "compoundVCText";
             this.compoundVCText.Size = new System.Drawing.Size(136, 22);
             this.compoundVCText.TabIndex = 0;
-            this.compoundVCText.TextChanged += new System.EventHandler(this.compoundVCText_TextChanged);
-            this.compoundVCText.Validating += new System.ComponentModel.CancelEventHandler(this.compoundVCText_Validating);
             // 
             // CCSBox
             // 
@@ -724,63 +776,9 @@
             this.titleLabel.TabIndex = 21;
             this.titleLabel.Text = "SCRIPT GENERATOR V0000";
             // 
-            // btnLoad
-            // 
-            this.btnLoad.BackColor = System.Drawing.Color.Transparent;
-            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.ForeColor = System.Drawing.Color.White;
-            this.btnLoad.Location = new System.Drawing.Point(169, 38);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(57, 22);
-            this.btnLoad.TabIndex = 22;
-            this.btnLoad.Text = "Browse";
-            this.btnLoad.UseVisualStyleBackColor = false;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnBrowseSourceTransfer
-            // 
-            this.btnBrowseSourceTransfer.BackColor = System.Drawing.Color.Transparent;
-            this.btnBrowseSourceTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrowseSourceTransfer.Location = new System.Drawing.Point(157, 44);
-            this.btnBrowseSourceTransfer.Name = "btnBrowseSourceTransfer";
-            this.btnBrowseSourceTransfer.Size = new System.Drawing.Size(61, 23);
-            this.btnBrowseSourceTransfer.TabIndex = 12;
-            this.btnBrowseSourceTransfer.Text = "Browse";
-            this.btnBrowseSourceTransfer.UseVisualStyleBackColor = false;
-            this.btnBrowseSourceTransfer.Click += new System.EventHandler(this.btnBrowseSourceTransfer_Click);
-            // 
-            // btnBrowseDestinationTransfer
-            // 
-            this.btnBrowseDestinationTransfer.BackColor = System.Drawing.Color.Transparent;
-            this.btnBrowseDestinationTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBrowseDestinationTransfer.Location = new System.Drawing.Point(157, 93);
-            this.btnBrowseDestinationTransfer.Name = "btnBrowseDestinationTransfer";
-            this.btnBrowseDestinationTransfer.Size = new System.Drawing.Size(61, 23);
-            this.btnBrowseDestinationTransfer.TabIndex = 13;
-            this.btnBrowseDestinationTransfer.Text = "Browse";
-            this.btnBrowseDestinationTransfer.UseVisualStyleBackColor = false;
-            this.btnBrowseDestinationTransfer.Click += new System.EventHandler(this.btnBrowseDestinationTransfer_Click);
-            // 
-            // waitDuration
-            // 
-            this.waitDuration.Location = new System.Drawing.Point(15, 51);
-            this.waitDuration.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.waitDuration.Name = "waitDuration";
-            this.waitDuration.Size = new System.Drawing.Size(56, 22);
-            this.waitDuration.TabIndex = 22;
-            this.waitDuration.Value = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
             // 
             // errorProvider1
             // 
@@ -791,7 +789,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1299, 771);
+            this.ClientSize = new System.Drawing.Size(1058, 466);
             this.Controls.Add(this.LoadBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.pictureBox1);
@@ -821,6 +819,7 @@
             this.LoadBox.PerformLayout();
             this.WaitBox.ResumeLayout(false);
             this.WaitBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).EndInit();
             this.CopyBox.ResumeLayout(false);
             this.CopyBox.PerformLayout();
             this.saveBox.ResumeLayout(false);
@@ -836,7 +835,6 @@
             this.ExportBox.ResumeLayout(false);
             this.ExportBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

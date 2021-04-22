@@ -13,7 +13,6 @@ namespace JungleDiamond
         // Declaring global variables
         public XDocument xdoc = new XDocument(new XDeclaration("1.0", "utf-8",null ),new XElement("VIOSO"));
 
-        private List<String> validationErrorList = new List<string>;
         public Main()
         {
             InitializeComponent();
@@ -141,8 +140,9 @@ namespace JungleDiamond
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
                     //XML elements
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "Load"), new XAttribute("name", "calib"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text)));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "common"),
+                    xdoc.Root.Add(new XComment("Loading Block"));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "load"), new XAttribute("name", "Calib"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text + ".Load")));
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Load"), new XAttribute("type", "common"),
                         new XElement("param", new XAttribute("file", loadText.Text))));
                     break;
 
@@ -156,8 +156,9 @@ namespace JungleDiamond
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
                     //XML elements
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "Transfer"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text)));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "transfer"),
+                    xdoc.Root.Add(new XComment("Transfer Block"));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "transfer"), new XAttribute("type", "file"), new XAttribute("use", lvi.Text + ".Transfer")));
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Transfer"), new XAttribute("type", "transfer"),
                             new XElement("from", new XAttribute("file", srcText.Text + ".sps")),
                             new XElement("to", new XAttribute("file", destText.Text + ".sps"))));
                     break;
@@ -172,8 +173,9 @@ namespace JungleDiamond
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
                         // XML elements
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "Timer"), new XAttribute("subtype", "Sleep"), new XAttribute("use", lvi.Text)));
-                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "common"),
+                        xdoc.Root.Add(new XComment("Waiting Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "Timer"), new XAttribute("subtype", "Sleep"), new XAttribute("use", lvi.Text + ".Sleep")));
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Sleep"), new XAttribute("type", "common"),
                                 new XElement("param", new XAttribute("duration", waitDuration.Text))));
                         break;
 
@@ -189,8 +191,9 @@ namespace JungleDiamond
                     //clear panel
                     activePanel.Controls.Clear();
                     //XML elements
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "save"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text)));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "common"),
+                    xdoc.Root.Add(new XComment("Saving Block"));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "save"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text + ".Save")));
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Save"), new XAttribute("type", "common"),
                         new XElement("param", new XAttribute("file", saveText.Text + ".sps"))));
                     break;
                 case "Recalibrate":
@@ -204,11 +207,12 @@ namespace JungleDiamond
                     scriptList.Items.Add(lvi);
                     //XML elements
                         //tasks
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Recalib"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text)));
+                    xdoc.Root.Add(new XComment("Recalibration Block"));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Recalib"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".Recalibration")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Recalib"), new XAttribute("state", "finished")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "Timer"), new XAttribute("subtype", "Sleep"), new XAttribute("use", "stdWait")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
                         //define
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "BehaviourCreate"),
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Recalibration"), new XAttribute("type", "BehaviourCreate"),
                                 new XElement("param", new XAttribute("interactLevel",InteractBox.SelectedItem.ToString())),
                                 new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", compoundRecalText.Text))));
                         break;
@@ -223,26 +227,21 @@ namespace JungleDiamond
                     scriptList.Items.Add(lvi);
                     //XML elements
                         //tasks
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "BlendCal"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text)));
+                    xdoc.Root.Add(new XComment("Blending Recalibration [3D] Block"));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "BlendCal"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".BlendCalc.Start")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCal"), new XAttribute("state", "Interact.DeviceSel")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "BlendCal"), new XAttribute("state", "DeviceSel"), new XAttribute("use", lvi.Text+".Rb")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("name", "BlendCalc"), new XAttribute("type", "progress")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "BlendCal"), new XAttribute("state", "DeviceSel"), new XAttribute("use", lvi.Text + ".BlendCalc.Config")));
+                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("name", "BlendCalc"), new XAttribute("type", "progress"), new XAttribute("subtype", "next")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCalc"), new XAttribute("state", "finished")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
                         //define
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text), new XAttribute("type", "BehaviourCreate"),
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".BlendCalc.Start"), new XAttribute("type", "BehaviourCreate"),
                                 new XElement("param", new XAttribute("interactLevel", "many,noFinalResult")),
                                 new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", compoundBlendText.Text))));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Rb"), new XAttribute("type", "SC_DevSel"),
+                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".BlendCalc.Config"), new XAttribute("type", "SC_DevSel"),
                                 new XElement("param", new XAttribute("tCalib", "preceeding"), new XAttribute("tArrangement", "hstrip"), new XAttribute("calibName", compoundBlendText.Text+"_Reblended"))));
                     break;
                 case "Add VC to display Geometry":
-
-                    if (validationErrorList.Count != 0)
-                    {
-                        //TODO: Show Validation Error
-                    }
-
                     //Nb
                     lvi.Text = scriptList.Items.Count.ToString();
                     //Name
@@ -253,6 +252,7 @@ namespace JungleDiamond
                     scriptList.Items.Add(lvi);
                     //XML elements
                         //tasks
+                    xdoc.Root.Add(new XComment("Conversion Block: Add VC to display geometry"));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "Interact.Convert")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".AddVC")));
@@ -277,6 +277,7 @@ namespace JungleDiamond
 
                     //XML Elements
                     //Tasks
+                    xdoc.Root.Add(new XComment("Conversion Block: Custom content space conversion"));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "ContentSpace"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "Interact.Convert")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".CCS_BLOCK")));
@@ -306,6 +307,7 @@ namespace JungleDiamond
   
                     //XML Elements
                     //Task
+                    xdoc.Root.Add(new XComment("Export Block"));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Export1"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "export")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "Interact.Export")));
                     xdoc.Root.Add(new XElement("taks", new XAttribute("action", "configure"), new XAttribute("name", "Export1"), new XAttribute("state", "ExportConfig"),
@@ -328,10 +330,12 @@ namespace JungleDiamond
  
         }
 
-        
-/// <summary>
-/// Generates and saves the XML document
-/// </summary>
+
+        /// <summary>
+        /// Generates and saves the XML document
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void generateScript_Click(object sender, EventArgs e)
         {
             //generate common XML elements
@@ -353,6 +357,12 @@ namespace JungleDiamond
 
         }
 
+       /// <summary>
+       /// Shows a SaveFileDialog and writes the selected Filename in 'saveFile'.
+       /// Returns true, if a file name is selected.
+       /// </summary>
+       /// <param name="saveFile">File name</param>
+       /// <returns>true, if a file name is selected</returns>
         private bool showSaveFileDialog(ref String saveFile)
         {
             DialogResult dialogResult = saveFileDialog1.ShowDialog();
@@ -366,8 +376,11 @@ namespace JungleDiamond
         }
 
         /// <summary>
-        /// Open a folder browser dialog and return the selected path, but only if the OK button was pressed else an empty String is returned.
+        /// Shows a FolderBrowseDialog and writes the selected Folder path in 'selectedPath'.
+        /// Returns true, if a folder name is selected.
         /// </summary>
+        /// <param name="selectedPath">Folder name</param>
+        /// <returns>true, if a folder is selected</returns>
         private bool showSelectFolderDialog(ref String selectedPath) 
         {
             DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
@@ -380,6 +393,12 @@ namespace JungleDiamond
             return selectedPath.Length > 0;
         }
 
+        /// <summary>
+        /// Shows a OpenFileDialog and writes the selected Filename in 'selectedFile'.
+        /// Returns true, if a file is selected.
+        /// </summary>
+        /// <param name="selectedFile">File name</param>
+        /// <returns>true, if a file is selected</returns>
         private bool showSelectFileDialog(ref String selectedFile)
         {
             openFileDialog1.Filter = "VIOSO files (*.sps)|*.sps|All Files (*.*)|*.*";
@@ -410,6 +429,11 @@ namespace JungleDiamond
             functionBox.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Handle the click event for the SelectExportDestination Button.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnSelectExportDestination_Click(object sender, EventArgs e)
         {
             String selectedPath = String.Empty;
@@ -419,6 +443,11 @@ namespace JungleDiamond
             }
         }
 
+        /// <summary>
+        /// Handle the click event for the Load Button.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnLoad_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
@@ -428,6 +457,11 @@ namespace JungleDiamond
             }
         }
 
+        /// <summary>
+        /// Handle the click event for the BrowseSourceTransfer Button.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnBrowseSourceTransfer_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
@@ -437,32 +471,19 @@ namespace JungleDiamond
             }
         }
 
+        /// <summary>
+        /// Handle the click event for the BrowseDestinationTransfer Button.
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnBrowseDestinationTransfer_Click(object sender, EventArgs e)
         {
             String destinationFile = String.Empty;
             if (showSaveFileDialog(ref destinationFile))
             {
-                srcText.Text = destinationFile;
+                destText.Text = destinationFile;
             }
         }
 
-        private void compoundVCText_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Console.WriteLine("Validate CompoundVCText " + compoundVCText.Text.Length);
-            if (compoundVCText.Text.Length == 0)
-            {
-                Console.WriteLine("Invalid Input");
-                e.Cancel = true;
-                compoundVCText.Select();
-                errorProvider1.SetError(compoundVCText, "Compound Name can't be empty!");
-
-                validationErrorList.Add("Compound Name Invalid");
-            }
-        }
-
-        private void compoundVCText_TextChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine(compoundVCText.Text);
-        }
     }
 }
