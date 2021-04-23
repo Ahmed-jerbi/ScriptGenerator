@@ -8,6 +8,23 @@ using System.Collections.Generic;
 
 namespace JungleDiamond
 {
+
+    struct ViosoFolders
+    {
+        public const String Root = "C:\\Users\\Public\\Documents\\VIOSO\\Anyblend";
+
+        public const String Scripting = "\\Scripting";
+        public const String Calibration = "\\Calibration";
+        public const String Export = "\\Export";
+    }
+
+    struct ViosoFilters
+    {
+        public const String AllFiles = "All Files (*.*)|*.*";
+        public const String Calibration = "Calibration (*.sps)|*.sps";
+        public const String Script = "VISOS Script (*.ini)|*.ini";
+    }
+
     public partial class Main : Form
     {
         // Declaring global variables
@@ -159,8 +176,8 @@ namespace JungleDiamond
                     xdoc.Root.Add(new XComment("Transfer Block"));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "transfer"), new XAttribute("type", "file"), new XAttribute("use", lvi.Text + ".Transfer")));
                     xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Transfer"), new XAttribute("type", "transfer"),
-                            new XElement("from", new XAttribute("file", srcText.Text + ".sps")),
-                            new XElement("to", new XAttribute("file", destText.Text + ".sps"))));
+                            new XElement("from", new XAttribute("file", srcText.Text)),
+                            new XElement("to", new XAttribute("file", destText.Text))));
                     break;
 
                 case "Wait":
@@ -194,7 +211,7 @@ namespace JungleDiamond
                     xdoc.Root.Add(new XComment("Saving Block"));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "save"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text + ".Save")));
                     xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Save"), new XAttribute("type", "common"),
-                        new XElement("param", new XAttribute("file", saveText.Text + ".sps"))));
+                        new XElement("param", new XAttribute("file", saveText.Text))));
                     break;
                 case "Recalibrate":
                     //Nb
@@ -343,7 +360,7 @@ namespace JungleDiamond
             new XElement("param", new XAttribute("duration", "3000"))));
             //SAVE dialog
             String saveFileName = String.Empty;
-            if (showSaveFileDialog(ref saveFileName)) 
+            if (showSaveFileDialog(ref saveFileName, ViosoFolders.Scripting, ViosoFilters.Script)) 
             {
                 //Write XML file with UTF8 and no BOM
                 XmlWriterSettings settings = new XmlWriterSettings();
@@ -363,8 +380,11 @@ namespace JungleDiamond
        /// </summary>
        /// <param name="saveFile">File name</param>
        /// <returns>true, if a file name is selected</returns>
-        private bool showSaveFileDialog(ref String saveFile)
+        private bool showSaveFileDialog(ref String saveFile, String viosoFolder, String viosoFilter)
         {
+            saveFileDialog1.FileName = String.Empty;
+            saveFileDialog1.Filter = viosoFilter;
+            saveFileDialog1.InitialDirectory = ViosoFolders.Root + viosoFolder;
             DialogResult dialogResult = saveFileDialog1.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
@@ -399,11 +419,11 @@ namespace JungleDiamond
         /// </summary>
         /// <param name="selectedFile">File name</param>
         /// <returns>true, if a file is selected</returns>
-        private bool showSelectFileDialog(ref String selectedFile)
+        private bool showSelectFileDialog(ref String selectedFile, String viosoFolder)
         {
-            openFileDialog1.Filter = "VIOSO files (*.sps)|*.sps|All Files (*.*)|*.*";
-            openFileDialog1.Title = "Select File";
+            openFileDialog1.Filter = ViosoFilters.Calibration + "|" + ViosoFilters.AllFiles;
             openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = ViosoFolders.Root + viosoFolder;
             DialogResult dialogResult = openFileDialog1.ShowDialog();
 
             if (dialogResult == DialogResult.OK)
@@ -451,7 +471,7 @@ namespace JungleDiamond
         private void btnLoad_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
-            if (showSelectFileDialog(ref selectedFile))
+            if (showSelectFileDialog(ref selectedFile, ViosoFolders.Calibration))
             {
                 loadText.Text = selectedFile;
             }
@@ -465,7 +485,7 @@ namespace JungleDiamond
         private void btnBrowseSourceTransfer_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
-            if (showSelectFileDialog(ref selectedFile))
+            if (showSelectFileDialog(ref selectedFile, ViosoFolders.Calibration))
             {
                 srcText.Text = selectedFile;
             }
@@ -479,11 +499,20 @@ namespace JungleDiamond
         private void btnBrowseDestinationTransfer_Click(object sender, EventArgs e)
         {
             String destinationFile = String.Empty;
-            if (showSaveFileDialog(ref destinationFile))
+            if (showSaveFileDialog(ref destinationFile, ViosoFolders.Calibration, ViosoFilters.Calibration))
             {
                 destText.Text = destinationFile;
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            String saveFile = String.Empty;
+            if (showSaveFileDialog(ref saveFile, ViosoFolders.Calibration, ViosoFilters.Calibration))
+            {
+                int index = saveFile.LastIndexOf("\\") + 1;
+                saveText.Text = saveFile.Substring(index);
+            }
+        }
     }
 }

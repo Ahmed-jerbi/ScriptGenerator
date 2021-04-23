@@ -94,6 +94,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSave = new System.Windows.Forms.Button();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -403,6 +404,7 @@
             // 
             // saveBox
             // 
+            this.saveBox.Controls.Add(this.btnSave);
             this.saveBox.Controls.Add(this.label1);
             this.saveBox.Controls.Add(this.label10);
             this.saveBox.Controls.Add(this.saveText);
@@ -418,7 +420,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(157, 47);
+            this.label1.Location = new System.Drawing.Point(43, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 8;
@@ -784,12 +786,24 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnSave
+            // 
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.ForeColor = System.Drawing.Color.Transparent;
+            this.btnSave.Location = new System.Drawing.Point(157, 37);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(64, 23);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Browse";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1058, 466);
+            this.ClientSize = new System.Drawing.Size(1054, 465);
             this.Controls.Add(this.LoadBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.pictureBox1);
@@ -906,6 +920,7 @@
         private System.Windows.Forms.Button btnBrowseDestinationTransfer;
         private System.Windows.Forms.NumericUpDown waitDuration;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnSave;
     }
 }
 
