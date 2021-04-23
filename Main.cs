@@ -22,7 +22,7 @@ namespace JungleDiamond
     {
         public const String AllFiles = "All Files (*.*)|*.*";
         public const String Calibration = "Calibration (*.sps)|*.sps";
-        public const String Script = "VISOS Script (*.ini)|*.ini";
+        public const String Script = "VIOSO Script (*.ini)|*.ini";
     }
 
     public partial class Main : Form
