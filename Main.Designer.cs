@@ -57,6 +57,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.srcText = new System.Windows.Forms.TextBox();
             this.saveBox = new System.Windows.Forms.GroupBox();
+            this.btnBrowseSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.saveText = new System.Windows.Forms.TextBox();
@@ -94,7 +95,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnSave = new System.Windows.Forms.Button();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -264,7 +264,7 @@
             this.WaitBox.ForeColor = System.Drawing.SystemColors.Window;
             this.WaitBox.Location = new System.Drawing.Point(49, 632);
             this.WaitBox.Name = "WaitBox";
-            this.WaitBox.Size = new System.Drawing.Size(123, 90);
+            this.WaitBox.Size = new System.Drawing.Size(123, 96);
             this.WaitBox.TabIndex = 15;
             this.WaitBox.TabStop = false;
             this.WaitBox.Text = "Wait";
@@ -272,7 +272,14 @@
             // 
             // waitDuration
             // 
-            this.waitDuration.Location = new System.Drawing.Point(15, 51);
+            this.waitDuration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.waitDuration.ForeColor = System.Drawing.SystemColors.Window;
+            this.waitDuration.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.waitDuration.Location = new System.Drawing.Point(23, 54);
             this.waitDuration.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -281,6 +288,8 @@
             this.waitDuration.Name = "waitDuration";
             this.waitDuration.Size = new System.Drawing.Size(56, 22);
             this.waitDuration.TabIndex = 22;
+            this.waitDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.waitDuration.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.waitDuration.Value = new decimal(new int[] {
             3000,
             0,
@@ -290,7 +299,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(78, 53);
+            this.label8.Location = new System.Drawing.Point(85, 58);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(21, 13);
             this.label8.TabIndex = 8;
@@ -318,7 +327,7 @@
             this.CopyBox.ForeColor = System.Drawing.SystemColors.Window;
             this.CopyBox.Location = new System.Drawing.Point(49, 463);
             this.CopyBox.Name = "CopyBox";
-            this.CopyBox.Size = new System.Drawing.Size(224, 141);
+            this.CopyBox.Size = new System.Drawing.Size(228, 141);
             this.CopyBox.TabIndex = 16;
             this.CopyBox.TabStop = false;
             this.CopyBox.Text = "Copy/transfer";
@@ -351,7 +360,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(85, 77);
+            this.label6.Location = new System.Drawing.Point(78, 79);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 11;
@@ -378,7 +387,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(60, 29);
+            this.label4.Location = new System.Drawing.Point(54, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 8;
@@ -404,7 +413,7 @@
             // 
             // saveBox
             // 
-            this.saveBox.Controls.Add(this.btnSave);
+            this.saveBox.Controls.Add(this.btnBrowseSave);
             this.saveBox.Controls.Add(this.label1);
             this.saveBox.Controls.Add(this.label10);
             this.saveBox.Controls.Add(this.saveText);
@@ -417,10 +426,22 @@
             this.saveBox.Text = "Save";
             this.saveBox.Visible = false;
             // 
+            // btnBrowseSave
+            // 
+            this.btnBrowseSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowseSave.ForeColor = System.Drawing.Color.Transparent;
+            this.btnBrowseSave.Location = new System.Drawing.Point(157, 37);
+            this.btnBrowseSave.Name = "btnBrowseSave";
+            this.btnBrowseSave.Size = new System.Drawing.Size(64, 23);
+            this.btnBrowseSave.TabIndex = 9;
+            this.btnBrowseSave.Text = "Browse";
+            this.btnBrowseSave.UseVisualStyleBackColor = true;
+            this.btnBrowseSave.Click += new System.EventHandler(this.btnBrowseSave_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 21);
+            this.label1.Location = new System.Drawing.Point(36, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 8;
@@ -610,7 +631,7 @@
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.resetButton.Location = new System.Drawing.Point(849, 409);
+            this.resetButton.Location = new System.Drawing.Point(48, 409);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(54, 44);
             this.resetButton.TabIndex = 19;
@@ -778,6 +799,10 @@
             this.titleLabel.TabIndex = 21;
             this.titleLabel.Text = "SCRIPT GENERATOR V0000";
             // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.SelectedPath = "C:\\Users\\Public\\Documents\\VIOSO\\Anyblend\\Export";
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -786,24 +811,12 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // btnSave
-            // 
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSave.Location = new System.Drawing.Point(157, 37);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(64, 23);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Browse";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1054, 465);
+            this.ClientSize = new System.Drawing.Size(1072, 469);
             this.Controls.Add(this.LoadBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.pictureBox1);
@@ -920,7 +933,7 @@
         private System.Windows.Forms.Button btnBrowseDestinationTransfer;
         private System.Windows.Forms.NumericUpDown waitDuration;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnBrowseSave;
     }
 }
 

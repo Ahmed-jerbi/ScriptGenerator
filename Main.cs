@@ -9,26 +9,25 @@ using System.Collections.Generic;
 namespace JungleDiamond
 {
 
-    struct ViosoFolders
-    {
-        public const String Root = "C:\\Users\\Public\\Documents\\VIOSO\\Anyblend";
-
-        public const String Scripting = "\\Scripting";
-        public const String Calibration = "\\Calibration";
-        public const String Export = "\\Export";
-    }
-
-    struct ViosoFilters
-    {
-        public const String AllFiles = "All Files (*.*)|*.*";
-        public const String Calibration = "Calibration (*.sps)|*.sps";
-        public const String Script = "VIOSO Script (*.ini)|*.ini";
-    }
-
     public partial class Main : Form
     {
         // Declaring global variables
         public XDocument xdoc = new XDocument(new XDeclaration("1.0", "utf-8",null ),new XElement("VIOSO"));
+        struct ViosoFolders
+        {
+            public const String Root = "C:\\Users\\Public\\Documents\\VIOSO\\Anyblend";
+
+            public const String Scripting = "\\Scripting";
+            public const String Calibration = "\\Calibration";
+            public const String Export = "\\Export";
+        }
+
+        struct ViosoFilters
+        {
+            public const String AllFiles = "All Files (*.*)|*.*";
+            public const String Calibration = "Calibration (*.sps)|*.sps";
+            public const String Script = "VIOSO Script (*.ini)|*.ini";
+        }
 
         public Main()
         {
@@ -329,7 +328,7 @@ namespace JungleDiamond
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "Interact.Export")));
                     xdoc.Root.Add(new XElement("taks", new XAttribute("action", "configure"), new XAttribute("name", "Export1"), new XAttribute("state", "ExportConfig"),
                                     new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundExpText.Text)),
-                                    new XElement("param", new XAttribute("tConvert", expFormat.Text), new XAttribute("path", fullPath), new XAttribute("name", expName.Text), new XAttribute("bSplitDisplays", "1"), new XAttribute("bExactFileName", "1"))
+                                    new XElement("param", new XAttribute("tConvert", expFormat.Text), new XAttribute("path", expPath.Text), new XAttribute("name", expName.Text), new XAttribute("bSplitDisplays", "1"), new XAttribute("bExactFileName", "1"))
                                   ));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "Export1")));
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "finished")));
@@ -355,8 +354,8 @@ namespace JungleDiamond
         /// <param name="e"></param>
         private void generateScript_Click(object sender, EventArgs e)
         {
-            //generate common XML elements
-            xdoc.Root.Add(new XElement("define", new XAttribute("name", "stdWait"), new XAttribute("type", "common"),
+            //generate common XML elements: Wait 3000 at the end of document
+            xdoc.Root.LastNode.AddAfterSelf(new XElement("define", new XAttribute("name", "stdWait"), new XAttribute("type", "common"),
             new XElement("param", new XAttribute("duration", "3000"))));
             //SAVE dialog
             String saveFileName = String.Empty;
@@ -395,23 +394,6 @@ namespace JungleDiamond
             return saveFile.Length > 0;
         }
 
-        /// <summary>
-        /// Shows a FolderBrowseDialog and writes the selected Folder path in 'selectedPath'.
-        /// Returns true, if a folder name is selected.
-        /// </summary>
-        /// <param name="selectedPath">Folder name</param>
-        /// <returns>true, if a folder is selected</returns>
-        private bool showSelectFolderDialog(ref String selectedPath) 
-        {
-            DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
-            
-            if (dialogResult == DialogResult.OK) 
-            {
-                selectedPath = folderBrowserDialog1.SelectedPath;
-            }
-
-            return selectedPath.Length > 0;
-        }
 
         /// <summary>
         /// Shows a OpenFileDialog and writes the selected Filename in 'selectedFile'.
@@ -429,8 +411,11 @@ namespace JungleDiamond
             if (dialogResult == DialogResult.OK)
             {
                 String fileName = openFileDialog1.FileName;
-                int index = fileName.LastIndexOf("\\") + 1;
-                selectedFile = fileName.Substring(index);
+                String ViosoPath = ViosoFolders.Root + viosoFolder;
+                //checks if the path is the VIOSO root to leave only the file name
+                if (fileName.Contains(ViosoFolders.Root + viosoFolder))
+                    selectedFile = fileName.Substring(ViosoPath.Length+1);
+                else selectedFile = fileName;
             }
 
             return selectedFile.Length > 0;
@@ -441,7 +426,6 @@ namespace JungleDiamond
         /// </summary>
         private void resetButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Reset");
             xdoc.Root.RemoveAll();
             scriptList.Items.Clear();
             addButton.Enabled = false;
@@ -452,22 +436,22 @@ namespace JungleDiamond
         /// <summary>
         /// Handle the click event for the SelectExportDestination Button.
         /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">EventArgs</param>
+
         private void btnSelectExportDestination_Click(object sender, EventArgs e)
         {
             String selectedPath = String.Empty;
-            if (showSelectFolderDialog(ref selectedPath))
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
+                selectedPath = folderBrowserDialog1.SelectedPath;
                 expPath.Text = selectedPath;
             }
+
         }
 
         /// <summary>
         /// Handle the click event for the Load Button.
         /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">EventArgs</param>
+
         private void btnLoad_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
@@ -480,8 +464,7 @@ namespace JungleDiamond
         /// <summary>
         /// Handle the click event for the BrowseSourceTransfer Button.
         /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">EventArgs</param>
+
         private void btnBrowseSourceTransfer_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
@@ -494,24 +477,29 @@ namespace JungleDiamond
         /// <summary>
         /// Handle the click event for the BrowseDestinationTransfer Button.
         /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">EventArgs</param>
+
         private void btnBrowseDestinationTransfer_Click(object sender, EventArgs e)
         {
             String destinationFile = String.Empty;
             if (showSaveFileDialog(ref destinationFile, ViosoFolders.Calibration, ViosoFilters.Calibration))
             {
+                String ViosoPath = ViosoFolders.Root + ViosoFolders.Calibration ;
+                //check if we are in default VIOSO path
+                if (destinationFile.Contains(ViosoPath))
+                    destinationFile = destinationFile.Substring(ViosoPath.Length + 1);
                 destText.Text = destinationFile;
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Handle the click event for the BrowseSave Button.
+        /// </summary>
+        private void btnBrowseSave_Click(object sender, EventArgs e)
         {
             String saveFile = String.Empty;
             if (showSaveFileDialog(ref saveFile, ViosoFolders.Calibration, ViosoFilters.Calibration))
             {
-                int index = saveFile.LastIndexOf("\\") + 1;
-                saveText.Text = saveFile.Substring(index);
+                saveText.Text = saveFile;
             }
         }
     }
