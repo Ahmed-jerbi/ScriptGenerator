@@ -354,9 +354,14 @@ namespace JungleDiamond
         /// <param name="e"></param>
         private void generateScript_Click(object sender, EventArgs e)
         {
-            //generate common XML elements: Wait 3000 at the end of document
-            xdoc.Root.LastNode.AddAfterSelf(new XElement("define", new XAttribute("name", "stdWait"), new XAttribute("type", "common"),
-            new XElement("param", new XAttribute("duration", "3000"))));
+            //generate common XML elements at the end of document: add Wait 3000
+            if (xdoc.Root.LastNode != null)
+            {
+                xdoc.Root.Add(new XComment("Default Waiting Block"));
+                xdoc.Root.LastNode.AddAfterSelf(new XElement("define", new XAttribute("name", "stdWait"), new XAttribute("type", "common"),
+                                                new XElement("param", new XAttribute("duration", "3000"))));
+            }
+         
             //SAVE dialog
             String saveFileName = String.Empty;
             if (showSaveFileDialog(ref saveFileName, ViosoFolders.Scripting, ViosoFilters.Script)) 
