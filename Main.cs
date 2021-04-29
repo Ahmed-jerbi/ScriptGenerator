@@ -152,6 +152,8 @@ namespace JungleDiamond
                     //Name
                     lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                     //argument
+                        //check .sps in file(s) name(s)
+                    if (!loadText.Text.EndsWith(".sps")) loadText.Text += ".sps";
                     lvi.SubItems.Add(loadText.Text);
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
@@ -168,7 +170,10 @@ namespace JungleDiamond
                     //Name
                     lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                     //argument
-                    lvi.SubItems.Add(srcText.Text + ".sps --> "+ destText.Text + ".sps");
+                        //check .sps in file(s) name(s)
+                    if (!srcText.Text.EndsWith(".sps")) srcText.Text += ".sps";
+                    if (!destText.Text.EndsWith(".sps")) destText.Text += ".sps";
+                    lvi.SubItems.Add(srcText.Text + " --> "+ destText.Text);
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
                     //XML elements
@@ -201,6 +206,8 @@ namespace JungleDiamond
                     //Name
                     lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                     //argument
+                        //check .sps in file(s) name(s)
+                    if (!saveText.Text.EndsWith(".sps")) saveText.Text += ".sps";
                     lvi.SubItems.Add(saveText.Text);
                     //--> add the ScriptList
                     scriptList.Items.Add(lvi);
