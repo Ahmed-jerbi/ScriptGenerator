@@ -95,6 +95,19 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.observerCorrection = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.displayOCText = new System.Windows.Forms.TextBox();
+            this.viewportOCText = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.hScaleOCText = new System.Windows.Forms.TextBox();
+            this.hOffsetOCText = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.vScaleOCText = new System.Windows.Forms.TextBox();
+            this.vOffsetOCText = new System.Windows.Forms.TextBox();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -107,6 +120,7 @@
             this.ExportBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.observerCorrection.SuspendLayout();
             this.SuspendLayout();
             // 
             // fLabel
@@ -134,6 +148,7 @@
             "Recalculate Blending [3D]",
             "Add VC to display Geometry",
             "Custom content space conversion",
+            "Observer Correction",
             "Export"});
             this.functionBox.Location = new System.Drawing.Point(49, 159);
             this.functionBox.Name = "functionBox";
@@ -183,7 +198,7 @@
             this.activePanel.BackColor = System.Drawing.Color.Transparent;
             this.activePanel.Location = new System.Drawing.Point(49, 197);
             this.activePanel.Name = "activePanel";
-            this.activePanel.Size = new System.Drawing.Size(267, 193);
+            this.activePanel.Size = new System.Drawing.Size(267, 206);
             this.activePanel.TabIndex = 13;
             // 
             // addButton
@@ -811,12 +826,151 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // observerCorrection
+            // 
+            this.observerCorrection.Controls.Add(this.vOffsetOCText);
+            this.observerCorrection.Controls.Add(this.vScaleOCText);
+            this.observerCorrection.Controls.Add(this.label26);
+            this.observerCorrection.Controls.Add(this.label25);
+            this.observerCorrection.Controls.Add(this.hOffsetOCText);
+            this.observerCorrection.Controls.Add(this.hScaleOCText);
+            this.observerCorrection.Controls.Add(this.label24);
+            this.observerCorrection.Controls.Add(this.label23);
+            this.observerCorrection.Controls.Add(this.viewportOCText);
+            this.observerCorrection.Controls.Add(this.displayOCText);
+            this.observerCorrection.Controls.Add(this.label22);
+            this.observerCorrection.Controls.Add(this.label21);
+            this.observerCorrection.ForeColor = System.Drawing.SystemColors.Window;
+            this.observerCorrection.Location = new System.Drawing.Point(1097, 24);
+            this.observerCorrection.Name = "observerCorrection";
+            this.observerCorrection.Size = new System.Drawing.Size(212, 203);
+            this.observerCorrection.TabIndex = 22;
+            this.observerCorrection.TabStop = false;
+            this.observerCorrection.Text = "Observer Correction";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(76, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Display Name";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(7, 61);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(86, 13);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Viewport Name";
+            // 
+            // displayOCText
+            // 
+            this.displayOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.displayOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.displayOCText.Location = new System.Drawing.Point(10, 38);
+            this.displayOCText.Name = "displayOCText";
+            this.displayOCText.Size = new System.Drawing.Size(194, 22);
+            this.displayOCText.TabIndex = 2;
+            // 
+            // viewportOCText
+            // 
+            this.viewportOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.viewportOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.viewportOCText.Location = new System.Drawing.Point(10, 78);
+            this.viewportOCText.Name = "viewportOCText";
+            this.viewportOCText.Size = new System.Drawing.Size(194, 22);
+            this.viewportOCText.TabIndex = 3;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(7, 107);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(96, 13);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "Horizontale Scale";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(114, 107);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(39, 13);
+            this.label24.TabIndex = 5;
+            this.label24.Text = "Offset";
+            // 
+            // hScaleOCText
+            // 
+            this.hScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.hScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.hScaleOCText.Location = new System.Drawing.Point(10, 123);
+            this.hScaleOCText.Name = "hScaleOCText";
+            this.hScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.hScaleOCText.Size = new System.Drawing.Size(87, 22);
+            this.hScaleOCText.TabIndex = 6;
+            this.hScaleOCText.Text = "1";
+            // 
+            // hOffsetOCText
+            // 
+            this.hOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.hOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.hOffsetOCText.Location = new System.Drawing.Point(117, 123);
+            this.hOffsetOCText.Name = "hOffsetOCText";
+            this.hOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.hOffsetOCText.Size = new System.Drawing.Size(87, 22);
+            this.hOffsetOCText.TabIndex = 7;
+            this.hOffsetOCText.Text = "0";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(7, 152);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(73, 13);
+            this.label25.TabIndex = 8;
+            this.label25.Text = "Vertical Scale";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(114, 152);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(39, 13);
+            this.label26.TabIndex = 9;
+            this.label26.Text = "Offset";
+            // 
+            // vScaleOCText
+            // 
+            this.vScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.vScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.vScaleOCText.Location = new System.Drawing.Point(10, 168);
+            this.vScaleOCText.Name = "vScaleOCText";
+            this.vScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.vScaleOCText.Size = new System.Drawing.Size(87, 22);
+            this.vScaleOCText.TabIndex = 10;
+            this.vScaleOCText.Text = "1";
+            // 
+            // vOffsetOCText
+            // 
+            this.vOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.vOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.vOffsetOCText.Location = new System.Drawing.Point(117, 168);
+            this.vOffsetOCText.Name = "vOffsetOCText";
+            this.vOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.vOffsetOCText.Size = new System.Drawing.Size(89, 22);
+            this.vOffsetOCText.TabIndex = 11;
+            this.vOffsetOCText.Text = "0";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1066, 468);
+            this.ClientSize = new System.Drawing.Size(1559, 575);
+            this.Controls.Add(this.observerCorrection);
             this.Controls.Add(this.LoadBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.pictureBox1);
@@ -863,6 +1017,8 @@
             this.ExportBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.observerCorrection.ResumeLayout(false);
+            this.observerCorrection.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -934,6 +1090,19 @@
         private System.Windows.Forms.NumericUpDown waitDuration;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnBrowseSave;
+        private System.Windows.Forms.GroupBox observerCorrection;
+        private System.Windows.Forms.TextBox vOffsetOCText;
+        private System.Windows.Forms.TextBox vScaleOCText;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox hOffsetOCText;
+        private System.Windows.Forms.TextBox hScaleOCText;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox viewportOCText;
+        private System.Windows.Forms.TextBox displayOCText;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
     }
 }
 

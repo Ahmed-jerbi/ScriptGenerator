@@ -120,7 +120,12 @@ namespace JungleDiamond
                         ExportBox.Visible = true;
                         ExportBox.Location = new Point(0, 0);
                         break;
-
+                    case "Observer Correction":
+                        activePanel.Controls.Clear();
+                        activePanel.Controls.Add(observerCorrection);
+                        observerCorrection.Visible = true;
+                        observerCorrection.Location = new Point(0, 0);
+                        break;
 
                     default:
                         activePanel.Controls.Clear();
@@ -341,6 +346,41 @@ namespace JungleDiamond
                     xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "finished")));
                         
                     break;
+                 case "Observer Correction":
+                        String ocDisplay = displayOCText.Text;
+                        String ocViewport = viewportOCText.Text;
+                        String scaleHorizontal = hScaleOCText.Text;
+                        String scaleVertical = vScaleOCText.Text;
+                        String offsetHorizontal = hOffsetOCText.Text;
+                        String offsetVertical = vOffsetOCText.Text;
+
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(ocDisplay + ", " + ocViewport + ", Scale(" + scaleHorizontal + ", " + scaleVertical + "), Offset(" + offsetHorizontal + ", " + offsetVertical + ")");
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+
+                        //XML Elements
+                        //Task
+                        xdoc.Root.Add(new XComment("Conversion Block: Observer Correction"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "ObserverLeft"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ObserverLeft"), new XAttribute("state", "Interact.Convert")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "ObserverLeft"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".OC")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "ObserverLeft")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ObserverLeft"), new XAttribute("state", "finished")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+
+                        //define
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".OC"), new XAttribute("type", "CalibCommerce"), 
+                                           new XElement("display", new XAttribute("tDevice", "sd"), new XAttribute("name", ocDisplay)),
+                                           new XElement("param", new XAttribute("tConvert", "observer conversion"), new XAttribute("customContentSpace", ocViewport), new XAttribute("bNoDefaultParam", "1")),
+                                           new XElement("param0", new XAttribute("X", scaleHorizontal), new XAttribute("Y", offsetHorizontal), new XAttribute("Z", scaleVertical), new XAttribute("W", offsetVertical))
+                            ));
+
+                        break;
 
                 default:
                     Console.WriteLine("No Valid Selection");
