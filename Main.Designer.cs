@@ -81,33 +81,66 @@
             this.label16 = new System.Windows.Forms.Label();
             this.compoundBlendText = new System.Windows.Forms.TextBox();
             this.ExportBox = new System.Windows.Forms.GroupBox();
+            this.expIsSplitDisplay = new System.Windows.Forms.CheckBox();
+            this.expIs3D = new System.Windows.Forms.CheckBox();
+            this.expFormatBox = new System.Windows.Forms.ComboBox();
+            this.expIsUseSettingsFile = new System.Windows.Forms.CheckBox();
             this.btnSelectExportDestination = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.expName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.expPath = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.expFormat = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.compoundExpText = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.observerCorrection = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.displayOCText = new System.Windows.Forms.TextBox();
-            this.viewportOCText = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.hScaleOCText = new System.Windows.Forms.TextBox();
-            this.hOffsetOCText = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.vScaleOCText = new System.Windows.Forms.TextBox();
+            this.ObserverCorrectionBox = new System.Windows.Forms.GroupBox();
             this.vOffsetOCText = new System.Windows.Forms.TextBox();
+            this.vScaleOCText = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.hOffsetOCText = new System.Windows.Forms.TextBox();
+            this.hScaleOCText = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.viewportOCText = new System.Windows.Forms.TextBox();
+            this.displayOCText = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.MaskBox = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.maskFileText = new System.Windows.Forms.TextBox();
+            this.displayMaskText = new System.Windows.Forms.TextBox();
+            this.compoundMaskText = new System.Windows.Forms.TextBox();
+            this.btnSetMask = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ColorAdjustmentBox = new System.Windows.Forms.GroupBox();
+            this.bChannel = new System.Windows.Forms.NumericUpDown();
+            this.gChannel = new System.Windows.Forms.NumericUpDown();
+            this.rChannel = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.displayCAText = new System.Windows.Forms.TextBox();
+            this.compoundCAText = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.BlendingAdjustmentBox = new System.Windows.Forms.GroupBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.compoundBAText = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.plateauChannel = new System.Windows.Forms.NumericUpDown();
+            this.gradientChannel = new System.Windows.Forms.NumericUpDown();
+            this.gammaChannel = new System.Windows.Forms.NumericUpDown();
+            this.projectionChannel = new System.Windows.Forms.NumericUpDown();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -118,15 +151,25 @@
             this.CCSBox.SuspendLayout();
             this.RecalBlendBox.SuspendLayout();
             this.ExportBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.observerCorrection.SuspendLayout();
+            this.ObserverCorrectionBox.SuspendLayout();
+            this.MaskBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ColorAdjustmentBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rChannel)).BeginInit();
+            this.BlendingAdjustmentBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectionChannel)).BeginInit();
             this.SuspendLayout();
             // 
             // fLabel
             // 
             this.fLabel.AutoSize = true;
-            this.fLabel.Location = new System.Drawing.Point(49, 142);
+            this.fLabel.Location = new System.Drawing.Point(49, 110);
             this.fLabel.Name = "fLabel";
             this.fLabel.Size = new System.Drawing.Size(53, 13);
             this.fLabel.TabIndex = 5;
@@ -149,8 +192,11 @@
             "Add VC to display Geometry",
             "Custom content space conversion",
             "Observer Correction",
+            "Set Mask from File",
+            "Color Adjustment",
+            "Blending Adjustment",
             "Export"});
-            this.functionBox.Location = new System.Drawing.Point(49, 159);
+            this.functionBox.Location = new System.Drawing.Point(49, 130);
             this.functionBox.Name = "functionBox";
             this.functionBox.Size = new System.Drawing.Size(228, 21);
             this.functionBox.TabIndex = 6;
@@ -196,9 +242,9 @@
             // activePanel
             // 
             this.activePanel.BackColor = System.Drawing.Color.Transparent;
-            this.activePanel.Location = new System.Drawing.Point(49, 197);
+            this.activePanel.Location = new System.Drawing.Point(49, 157);
             this.activePanel.Name = "activePanel";
-            this.activePanel.Size = new System.Drawing.Size(267, 206);
+            this.activePanel.Size = new System.Drawing.Size(267, 246);
             this.activePanel.TabIndex = 13;
             // 
             // addButton
@@ -687,23 +733,75 @@
             // 
             // ExportBox
             // 
+            this.ExportBox.Controls.Add(this.expIsSplitDisplay);
+            this.ExportBox.Controls.Add(this.expIs3D);
+            this.ExportBox.Controls.Add(this.expFormatBox);
+            this.ExportBox.Controls.Add(this.expIsUseSettingsFile);
             this.ExportBox.Controls.Add(this.btnSelectExportDestination);
             this.ExportBox.Controls.Add(this.label19);
             this.ExportBox.Controls.Add(this.expName);
             this.ExportBox.Controls.Add(this.label20);
             this.ExportBox.Controls.Add(this.expPath);
             this.ExportBox.Controls.Add(this.label18);
-            this.ExportBox.Controls.Add(this.expFormat);
             this.ExportBox.Controls.Add(this.label17);
             this.ExportBox.Controls.Add(this.compoundExpText);
             this.ExportBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.ExportBox.Location = new System.Drawing.Point(587, 561);
+            this.ExportBox.Location = new System.Drawing.Point(1102, 485);
             this.ExportBox.Name = "ExportBox";
-            this.ExportBox.Size = new System.Drawing.Size(229, 189);
+            this.ExportBox.Size = new System.Drawing.Size(235, 235);
             this.ExportBox.TabIndex = 19;
             this.ExportBox.TabStop = false;
             this.ExportBox.Text = "Export";
             this.ExportBox.Visible = false;
+            // 
+            // expIsSplitDisplay
+            // 
+            this.expIsSplitDisplay.AutoSize = true;
+            this.expIsSplitDisplay.Location = new System.Drawing.Point(99, 121);
+            this.expIsSplitDisplay.Name = "expIsSplitDisplay";
+            this.expIsSplitDisplay.Size = new System.Drawing.Size(89, 17);
+            this.expIsSplitDisplay.TabIndex = 20;
+            this.expIsSplitDisplay.Text = "Split Display";
+            this.expIsSplitDisplay.UseVisualStyleBackColor = true;
+            // 
+            // expIs3D
+            // 
+            this.expIs3D.AutoSize = true;
+            this.expIs3D.Location = new System.Drawing.Point(16, 121);
+            this.expIs3D.Name = "expIs3D";
+            this.expIs3D.Size = new System.Drawing.Size(40, 17);
+            this.expIs3D.TabIndex = 19;
+            this.expIs3D.Text = "3D";
+            this.expIs3D.UseVisualStyleBackColor = true;
+            // 
+            // expFormatBox
+            // 
+            this.expFormatBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.expFormatBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.expFormatBox.FormattingEnabled = true;
+            this.expFormatBox.Items.AddRange(new object[] {
+            "vwf",
+            "vwf seperated",
+            "DWM",
+            "x-file",
+            "OpenWarp",
+            "MIPS",
+            "MPCDI v1"});
+            this.expFormatBox.Location = new System.Drawing.Point(99, 92);
+            this.expFormatBox.Name = "expFormatBox";
+            this.expFormatBox.Size = new System.Drawing.Size(121, 21);
+            this.expFormatBox.TabIndex = 18;
+            // 
+            // expIsUseSettingsFile
+            // 
+            this.expIsUseSettingsFile.AutoSize = true;
+            this.expIsUseSettingsFile.Location = new System.Drawing.Point(16, 66);
+            this.expIsUseSettingsFile.Name = "expIsUseSettingsFile";
+            this.expIsUseSettingsFile.Size = new System.Drawing.Size(134, 17);
+            this.expIsUseSettingsFile.TabIndex = 17;
+            this.expIsUseSettingsFile.Text = "use settings from file";
+            this.expIsUseSettingsFile.UseVisualStyleBackColor = true;
+            this.expIsUseSettingsFile.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // btnSelectExportDestination
             // 
@@ -711,7 +809,7 @@
             this.btnSelectExportDestination.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelectExportDestination.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectExportDestination.ForeColor = System.Drawing.Color.White;
-            this.btnSelectExportDestination.Location = new System.Drawing.Point(149, 147);
+            this.btnSelectExportDestination.Location = new System.Drawing.Point(148, 204);
             this.btnSelectExportDestination.Name = "btnSelectExportDestination";
             this.btnSelectExportDestination.Size = new System.Drawing.Size(75, 23);
             this.btnSelectExportDestination.TabIndex = 16;
@@ -722,25 +820,25 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(14, 84);
+            this.label19.Location = new System.Drawing.Point(13, 144);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 13);
+            this.label19.Size = new System.Drawing.Size(179, 13);
             this.label19.TabIndex = 15;
-            this.label19.Text = "File Name";
+            this.label19.Text = "File Name (without file extension)";
             // 
             // expName
             // 
             this.expName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.expName.ForeColor = System.Drawing.SystemColors.Window;
-            this.expName.Location = new System.Drawing.Point(17, 100);
+            this.expName.Location = new System.Drawing.Point(14, 160);
             this.expName.Name = "expName";
-            this.expName.Size = new System.Drawing.Size(158, 22);
+            this.expName.Size = new System.Drawing.Size(206, 22);
             this.expName.TabIndex = 14;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(12, 128);
+            this.label20.Location = new System.Drawing.Point(11, 188);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
             this.label20.TabIndex = 13;
@@ -750,7 +848,7 @@
             // 
             this.expPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.expPath.ForeColor = System.Drawing.SystemColors.Window;
-            this.expPath.Location = new System.Drawing.Point(15, 147);
+            this.expPath.Location = new System.Drawing.Point(14, 204);
             this.expPath.Name = "expPath";
             this.expPath.Size = new System.Drawing.Size(128, 22);
             this.expPath.TabIndex = 12;
@@ -758,27 +856,16 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(178, 80);
+            this.label18.Location = new System.Drawing.Point(13, 95);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(43, 13);
             this.label18.TabIndex = 9;
             this.label18.Text = "Format";
             // 
-            // expFormat
-            // 
-            this.expFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.expFormat.ForeColor = System.Drawing.SystemColors.Window;
-            this.expFormat.Location = new System.Drawing.Point(181, 100);
-            this.expFormat.Name = "expFormat";
-            this.expFormat.Size = new System.Drawing.Size(40, 22);
-            this.expFormat.TabIndex = 8;
-            this.expFormat.Text = "vwf";
-            this.expFormat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 22);
+            this.label17.Location = new System.Drawing.Point(11, 17);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 13);
             this.label17.TabIndex = 7;
@@ -788,20 +875,10 @@
             // 
             this.compoundExpText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.compoundExpText.ForeColor = System.Drawing.SystemColors.Window;
-            this.compoundExpText.Location = new System.Drawing.Point(15, 42);
+            this.compoundExpText.Location = new System.Drawing.Point(14, 37);
             this.compoundExpText.Name = "compoundExpText";
             this.compoundExpText.Size = new System.Drawing.Size(206, 22);
             this.compoundExpText.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::VIOSOScriptGenerator.Properties.Resources.Logo_VIOSO_trans;
-            this.pictureBox1.Location = new System.Drawing.Point(67, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 54);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
             // 
             // titleLabel
             // 
@@ -826,45 +903,117 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // observerCorrection
+            // ObserverCorrectionBox
             // 
-            this.observerCorrection.Controls.Add(this.vOffsetOCText);
-            this.observerCorrection.Controls.Add(this.vScaleOCText);
-            this.observerCorrection.Controls.Add(this.label26);
-            this.observerCorrection.Controls.Add(this.label25);
-            this.observerCorrection.Controls.Add(this.hOffsetOCText);
-            this.observerCorrection.Controls.Add(this.hScaleOCText);
-            this.observerCorrection.Controls.Add(this.label24);
-            this.observerCorrection.Controls.Add(this.label23);
-            this.observerCorrection.Controls.Add(this.viewportOCText);
-            this.observerCorrection.Controls.Add(this.displayOCText);
-            this.observerCorrection.Controls.Add(this.label22);
-            this.observerCorrection.Controls.Add(this.label21);
-            this.observerCorrection.ForeColor = System.Drawing.SystemColors.Window;
-            this.observerCorrection.Location = new System.Drawing.Point(1097, 24);
-            this.observerCorrection.Name = "observerCorrection";
-            this.observerCorrection.Size = new System.Drawing.Size(212, 203);
-            this.observerCorrection.TabIndex = 22;
-            this.observerCorrection.TabStop = false;
-            this.observerCorrection.Text = "Observer Correction";
+            this.ObserverCorrectionBox.Controls.Add(this.vOffsetOCText);
+            this.ObserverCorrectionBox.Controls.Add(this.vScaleOCText);
+            this.ObserverCorrectionBox.Controls.Add(this.label26);
+            this.ObserverCorrectionBox.Controls.Add(this.label25);
+            this.ObserverCorrectionBox.Controls.Add(this.hOffsetOCText);
+            this.ObserverCorrectionBox.Controls.Add(this.hScaleOCText);
+            this.ObserverCorrectionBox.Controls.Add(this.label24);
+            this.ObserverCorrectionBox.Controls.Add(this.label23);
+            this.ObserverCorrectionBox.Controls.Add(this.viewportOCText);
+            this.ObserverCorrectionBox.Controls.Add(this.displayOCText);
+            this.ObserverCorrectionBox.Controls.Add(this.label22);
+            this.ObserverCorrectionBox.Controls.Add(this.label21);
+            this.ObserverCorrectionBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ObserverCorrectionBox.Location = new System.Drawing.Point(1065, 24);
+            this.ObserverCorrectionBox.Name = "ObserverCorrectionBox";
+            this.ObserverCorrectionBox.Size = new System.Drawing.Size(229, 214);
+            this.ObserverCorrectionBox.TabIndex = 22;
+            this.ObserverCorrectionBox.TabStop = false;
+            this.ObserverCorrectionBox.Text = "Observer Correction";
+            this.ObserverCorrectionBox.Visible = false;
             // 
-            // label21
+            // vOffsetOCText
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 22);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(76, 13);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Display Name";
+            this.vOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.vOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.vOffsetOCText.Location = new System.Drawing.Point(117, 180);
+            this.vOffsetOCText.Name = "vOffsetOCText";
+            this.vOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.vOffsetOCText.Size = new System.Drawing.Size(89, 22);
+            this.vOffsetOCText.TabIndex = 11;
+            this.vOffsetOCText.Text = "0";
             // 
-            // label22
+            // vScaleOCText
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(7, 61);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(86, 13);
-            this.label22.TabIndex = 1;
-            this.label22.Text = "Viewport Name";
+            this.vScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.vScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.vScaleOCText.Location = new System.Drawing.Point(10, 180);
+            this.vScaleOCText.Name = "vScaleOCText";
+            this.vScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.vScaleOCText.Size = new System.Drawing.Size(87, 22);
+            this.vScaleOCText.TabIndex = 10;
+            this.vScaleOCText.Text = "1";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(114, 164);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(37, 13);
+            this.label26.TabIndex = 9;
+            this.label26.Text = "offset";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(7, 164);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(57, 13);
+            this.label25.TabIndex = 8;
+            this.label25.Text = "vert. scale";
+            // 
+            // hOffsetOCText
+            // 
+            this.hOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.hOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.hOffsetOCText.Location = new System.Drawing.Point(117, 133);
+            this.hOffsetOCText.Name = "hOffsetOCText";
+            this.hOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.hOffsetOCText.Size = new System.Drawing.Size(87, 22);
+            this.hOffsetOCText.TabIndex = 7;
+            this.hOffsetOCText.Text = "0";
+            // 
+            // hScaleOCText
+            // 
+            this.hScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.hScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.hScaleOCText.Location = new System.Drawing.Point(10, 133);
+            this.hScaleOCText.Name = "hScaleOCText";
+            this.hScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.hScaleOCText.Size = new System.Drawing.Size(87, 22);
+            this.hScaleOCText.TabIndex = 6;
+            this.hScaleOCText.Text = "1";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(114, 117);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(37, 13);
+            this.label24.TabIndex = 5;
+            this.label24.Text = "offset";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(7, 117);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(59, 13);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "hori. scale";
+            // 
+            // viewportOCText
+            // 
+            this.viewportOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.viewportOCText.ForeColor = System.Drawing.SystemColors.Window;
+            this.viewportOCText.Location = new System.Drawing.Point(10, 84);
+            this.viewportOCText.Name = "viewportOCText";
+            this.viewportOCText.Size = new System.Drawing.Size(194, 22);
+            this.viewportOCText.TabIndex = 3;
             // 
             // displayOCText
             // 
@@ -875,106 +1024,376 @@
             this.displayOCText.Size = new System.Drawing.Size(194, 22);
             this.displayOCText.TabIndex = 2;
             // 
-            // viewportOCText
+            // label22
             // 
-            this.viewportOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.viewportOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.viewportOCText.Location = new System.Drawing.Point(10, 78);
-            this.viewportOCText.Name = "viewportOCText";
-            this.viewportOCText.Size = new System.Drawing.Size(194, 22);
-            this.viewportOCText.TabIndex = 3;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(7, 67);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(86, 13);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Viewport Name";
             // 
-            // label23
+            // label21
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(7, 107);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(96, 13);
-            this.label23.TabIndex = 4;
-            this.label23.Text = "Horizontale Scale";
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(7, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(76, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Display Name";
             // 
-            // label24
+            // MaskBox
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(114, 107);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(39, 13);
-            this.label24.TabIndex = 5;
-            this.label24.Text = "Offset";
+            this.MaskBox.Controls.Add(this.label29);
+            this.MaskBox.Controls.Add(this.maskFileText);
+            this.MaskBox.Controls.Add(this.displayMaskText);
+            this.MaskBox.Controls.Add(this.compoundMaskText);
+            this.MaskBox.Controls.Add(this.btnSetMask);
+            this.MaskBox.Controls.Add(this.label28);
+            this.MaskBox.Controls.Add(this.label27);
+            this.MaskBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.MaskBox.Location = new System.Drawing.Point(1318, 29);
+            this.MaskBox.Name = "MaskBox";
+            this.MaskBox.Size = new System.Drawing.Size(229, 172);
+            this.MaskBox.TabIndex = 23;
+            this.MaskBox.TabStop = false;
+            this.MaskBox.Text = "Set Mask";
+            this.MaskBox.Visible = false;
             // 
-            // hScaleOCText
+            // label29
             // 
-            this.hScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.hScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.hScaleOCText.Location = new System.Drawing.Point(10, 123);
-            this.hScaleOCText.Name = "hScaleOCText";
-            this.hScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.hScaleOCText.Size = new System.Drawing.Size(87, 22);
-            this.hScaleOCText.TabIndex = 6;
-            this.hScaleOCText.Text = "1";
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(13, 116);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(55, 13);
+            this.label29.TabIndex = 6;
+            this.label29.Text = "Mask File";
             // 
-            // hOffsetOCText
+            // maskFileText
             // 
-            this.hOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.hOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.hOffsetOCText.Location = new System.Drawing.Point(117, 123);
-            this.hOffsetOCText.Name = "hOffsetOCText";
-            this.hOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.hOffsetOCText.Size = new System.Drawing.Size(87, 22);
-            this.hOffsetOCText.TabIndex = 7;
-            this.hOffsetOCText.Text = "0";
+            this.maskFileText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.maskFileText.ForeColor = System.Drawing.SystemColors.Window;
+            this.maskFileText.Location = new System.Drawing.Point(13, 136);
+            this.maskFileText.Name = "maskFileText";
+            this.maskFileText.Size = new System.Drawing.Size(125, 22);
+            this.maskFileText.TabIndex = 5;
             // 
-            // label25
+            // displayMaskText
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(7, 152);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(73, 13);
-            this.label25.TabIndex = 8;
-            this.label25.Text = "Vertical Scale";
+            this.displayMaskText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.displayMaskText.ForeColor = System.Drawing.SystemColors.Window;
+            this.displayMaskText.Location = new System.Drawing.Point(13, 87);
+            this.displayMaskText.Name = "displayMaskText";
+            this.displayMaskText.Size = new System.Drawing.Size(191, 22);
+            this.displayMaskText.TabIndex = 4;
             // 
-            // label26
+            // compoundMaskText
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(114, 152);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(39, 13);
-            this.label26.TabIndex = 9;
-            this.label26.Text = "Offset";
+            this.compoundMaskText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundMaskText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundMaskText.Location = new System.Drawing.Point(13, 41);
+            this.compoundMaskText.Name = "compoundMaskText";
+            this.compoundMaskText.Size = new System.Drawing.Size(191, 22);
+            this.compoundMaskText.TabIndex = 3;
             // 
-            // vScaleOCText
+            // btnSetMask
             // 
-            this.vScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.vScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.vScaleOCText.Location = new System.Drawing.Point(10, 168);
-            this.vScaleOCText.Name = "vScaleOCText";
-            this.vScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.vScaleOCText.Size = new System.Drawing.Size(87, 22);
-            this.vScaleOCText.TabIndex = 10;
-            this.vScaleOCText.Text = "1";
+            this.btnSetMask.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetMask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetMask.Location = new System.Drawing.Point(144, 136);
+            this.btnSetMask.Name = "btnSetMask";
+            this.btnSetMask.Size = new System.Drawing.Size(62, 23);
+            this.btnSetMask.TabIndex = 2;
+            this.btnSetMask.Text = "Browse";
+            this.btnSetMask.UseVisualStyleBackColor = false;
+            this.btnSetMask.Click += new System.EventHandler(this.btnSetMask_Click);
             // 
-            // vOffsetOCText
+            // label28
             // 
-            this.vOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.vOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.vOffsetOCText.Location = new System.Drawing.Point(117, 168);
-            this.vOffsetOCText.Name = "vOffsetOCText";
-            this.vOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.vOffsetOCText.Size = new System.Drawing.Size(89, 22);
-            this.vOffsetOCText.TabIndex = 11;
-            this.vOffsetOCText.Text = "0";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(13, 68);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(76, 13);
+            this.label28.TabIndex = 1;
+            this.label28.Text = "Display Name";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(10, 22);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(97, 13);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "Compound Name";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::VIOSOScriptGenerator.Properties.Resources.Logo_VIOSO_trans;
+            this.pictureBox1.Location = new System.Drawing.Point(67, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(249, 54);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ColorAdjustmentBox
+            // 
+            this.ColorAdjustmentBox.Controls.Add(this.bChannel);
+            this.ColorAdjustmentBox.Controls.Add(this.gChannel);
+            this.ColorAdjustmentBox.Controls.Add(this.rChannel);
+            this.ColorAdjustmentBox.Controls.Add(this.label34);
+            this.ColorAdjustmentBox.Controls.Add(this.label33);
+            this.ColorAdjustmentBox.Controls.Add(this.label32);
+            this.ColorAdjustmentBox.Controls.Add(this.displayCAText);
+            this.ColorAdjustmentBox.Controls.Add(this.compoundCAText);
+            this.ColorAdjustmentBox.Controls.Add(this.label31);
+            this.ColorAdjustmentBox.Controls.Add(this.label30);
+            this.ColorAdjustmentBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ColorAdjustmentBox.Location = new System.Drawing.Point(1065, 244);
+            this.ColorAdjustmentBox.Name = "ColorAdjustmentBox";
+            this.ColorAdjustmentBox.Size = new System.Drawing.Size(192, 214);
+            this.ColorAdjustmentBox.TabIndex = 24;
+            this.ColorAdjustmentBox.TabStop = false;
+            this.ColorAdjustmentBox.Text = "Color Adjustment";
+            this.ColorAdjustmentBox.Visible = false;
+            // 
+            // bChannel
+            // 
+            this.bChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.bChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.bChannel.Location = new System.Drawing.Point(84, 173);
+            this.bChannel.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.bChannel.Name = "bChannel";
+            this.bChannel.Size = new System.Drawing.Size(96, 22);
+            this.bChannel.TabIndex = 9;
+            this.bChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gChannel
+            // 
+            this.gChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.gChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.gChannel.Location = new System.Drawing.Point(84, 145);
+            this.gChannel.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.gChannel.Name = "gChannel";
+            this.gChannel.Size = new System.Drawing.Size(96, 22);
+            this.gChannel.TabIndex = 8;
+            this.gChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // rChannel
+            // 
+            this.rChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.rChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.rChannel.Location = new System.Drawing.Point(84, 114);
+            this.rChannel.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.rChannel.Name = "rChannel";
+            this.rChannel.Size = new System.Drawing.Size(96, 22);
+            this.rChannel.TabIndex = 7;
+            this.rChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(16, 147);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(38, 13);
+            this.label34.TabIndex = 6;
+            this.label34.Text = "Green";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(16, 175);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(29, 13);
+            this.label33.TabIndex = 5;
+            this.label33.Text = "Blue";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(16, 116);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(27, 13);
+            this.label32.TabIndex = 4;
+            this.label32.Text = "Red";
+            // 
+            // displayCAText
+            // 
+            this.displayCAText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.displayCAText.ForeColor = System.Drawing.SystemColors.Window;
+            this.displayCAText.Location = new System.Drawing.Point(13, 84);
+            this.displayCAText.Name = "displayCAText";
+            this.displayCAText.Size = new System.Drawing.Size(169, 22);
+            this.displayCAText.TabIndex = 3;
+            // 
+            // compoundCAText
+            // 
+            this.compoundCAText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundCAText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundCAText.Location = new System.Drawing.Point(13, 39);
+            this.compoundCAText.Name = "compoundCAText";
+            this.compoundCAText.Size = new System.Drawing.Size(169, 22);
+            this.compoundCAText.TabIndex = 2;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(10, 67);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(76, 13);
+            this.label31.TabIndex = 1;
+            this.label31.Text = "Display Name";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(10, 22);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(90, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Compund Name";
+            // 
+            // BlendingAdjustmentBox
+            // 
+            this.BlendingAdjustmentBox.Controls.Add(this.projectionChannel);
+            this.BlendingAdjustmentBox.Controls.Add(this.gammaChannel);
+            this.BlendingAdjustmentBox.Controls.Add(this.gradientChannel);
+            this.BlendingAdjustmentBox.Controls.Add(this.plateauChannel);
+            this.BlendingAdjustmentBox.Controls.Add(this.label39);
+            this.BlendingAdjustmentBox.Controls.Add(this.label38);
+            this.BlendingAdjustmentBox.Controls.Add(this.label37);
+            this.BlendingAdjustmentBox.Controls.Add(this.label36);
+            this.BlendingAdjustmentBox.Controls.Add(this.compoundBAText);
+            this.BlendingAdjustmentBox.Controls.Add(this.label35);
+            this.BlendingAdjustmentBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.BlendingAdjustmentBox.Location = new System.Drawing.Point(1318, 250);
+            this.BlendingAdjustmentBox.Name = "BlendingAdjustmentBox";
+            this.BlendingAdjustmentBox.Size = new System.Drawing.Size(229, 208);
+            this.BlendingAdjustmentBox.TabIndex = 25;
+            this.BlendingAdjustmentBox.TabStop = false;
+            this.BlendingAdjustmentBox.Text = "Blending Adjustment";
+            this.BlendingAdjustmentBox.Visible = false;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(7, 16);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(97, 13);
+            this.label35.TabIndex = 0;
+            this.label35.Text = "Compound Name";
+            // 
+            // compoundBAText
+            // 
+            this.compoundBAText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundBAText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundBAText.Location = new System.Drawing.Point(10, 33);
+            this.compoundBAText.Name = "compoundBAText";
+            this.compoundBAText.Size = new System.Drawing.Size(196, 22);
+            this.compoundBAText.TabIndex = 1;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(7, 78);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(45, 13);
+            this.label36.TabIndex = 2;
+            this.label36.Text = "Plateau";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(7, 110);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(52, 13);
+            this.label37.TabIndex = 3;
+            this.label37.Text = "Gradient";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(7, 141);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(45, 13);
+            this.label38.TabIndex = 4;
+            this.label38.Text = "Gamma";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(7, 169);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(59, 13);
+            this.label39.TabIndex = 5;
+            this.label39.Text = "Projection";
+            // 
+            // plateauChannel
+            // 
+            this.plateauChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.plateauChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.plateauChannel.Location = new System.Drawing.Point(86, 76);
+            this.plateauChannel.Name = "plateauChannel";
+            this.plateauChannel.Size = new System.Drawing.Size(120, 22);
+            this.plateauChannel.TabIndex = 6;
+            this.plateauChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gradientChannel
+            // 
+            this.gradientChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.gradientChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.gradientChannel.Location = new System.Drawing.Point(86, 108);
+            this.gradientChannel.Name = "gradientChannel";
+            this.gradientChannel.Size = new System.Drawing.Size(120, 22);
+            this.gradientChannel.TabIndex = 7;
+            this.gradientChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gammaChannel
+            // 
+            this.gammaChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.gammaChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.gammaChannel.Location = new System.Drawing.Point(86, 139);
+            this.gammaChannel.Name = "gammaChannel";
+            this.gammaChannel.Size = new System.Drawing.Size(120, 22);
+            this.gammaChannel.TabIndex = 8;
+            this.gammaChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // projectionChannel
+            // 
+            this.projectionChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.projectionChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.projectionChannel.Location = new System.Drawing.Point(86, 167);
+            this.projectionChannel.Name = "projectionChannel";
+            this.projectionChannel.Size = new System.Drawing.Size(120, 22);
+            this.projectionChannel.TabIndex = 9;
+            this.projectionChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1559, 575);
-            this.Controls.Add(this.observerCorrection);
+            this.ClientSize = new System.Drawing.Size(1075, 475);
+            this.Controls.Add(this.BlendingAdjustmentBox);
+            this.Controls.Add(this.ExportBox);
+            this.Controls.Add(this.ColorAdjustmentBox);
+            this.Controls.Add(this.MaskBox);
+            this.Controls.Add(this.ObserverCorrectionBox);
             this.Controls.Add(this.LoadBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.ExportBox);
             this.Controls.Add(this.RecalBlendBox);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.CCSBox);
@@ -1015,10 +1434,23 @@
             this.RecalBlendBox.PerformLayout();
             this.ExportBox.ResumeLayout(false);
             this.ExportBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.observerCorrection.ResumeLayout(false);
-            this.observerCorrection.PerformLayout();
+            this.ObserverCorrectionBox.ResumeLayout(false);
+            this.ObserverCorrectionBox.PerformLayout();
+            this.MaskBox.ResumeLayout(false);
+            this.MaskBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ColorAdjustmentBox.ResumeLayout(false);
+            this.ColorAdjustmentBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rChannel)).EndInit();
+            this.BlendingAdjustmentBox.ResumeLayout(false);
+            this.BlendingAdjustmentBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectionChannel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1074,7 +1506,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox expPath;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox expFormat;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox compoundExpText;
         private System.Windows.Forms.Label label19;
@@ -1090,7 +1521,7 @@
         private System.Windows.Forms.NumericUpDown waitDuration;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button btnBrowseSave;
-        private System.Windows.Forms.GroupBox observerCorrection;
+        private System.Windows.Forms.GroupBox ObserverCorrectionBox;
         private System.Windows.Forms.TextBox vOffsetOCText;
         private System.Windows.Forms.TextBox vScaleOCText;
         private System.Windows.Forms.Label label26;
@@ -1103,6 +1534,40 @@
         private System.Windows.Forms.TextBox displayOCText;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox MaskBox;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox maskFileText;
+        private System.Windows.Forms.TextBox displayMaskText;
+        private System.Windows.Forms.TextBox compoundMaskText;
+        private System.Windows.Forms.Button btnSetMask;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.GroupBox ColorAdjustmentBox;
+        private System.Windows.Forms.NumericUpDown bChannel;
+        private System.Windows.Forms.NumericUpDown gChannel;
+        private System.Windows.Forms.NumericUpDown rChannel;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox displayCAText;
+        private System.Windows.Forms.TextBox compoundCAText;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.CheckBox expIsSplitDisplay;
+        private System.Windows.Forms.CheckBox expIs3D;
+        private System.Windows.Forms.ComboBox expFormatBox;
+        private System.Windows.Forms.CheckBox expIsUseSettingsFile;
+        private System.Windows.Forms.GroupBox BlendingAdjustmentBox;
+        private System.Windows.Forms.NumericUpDown projectionChannel;
+        private System.Windows.Forms.NumericUpDown gammaChannel;
+        private System.Windows.Forms.NumericUpDown gradientChannel;
+        private System.Windows.Forms.NumericUpDown plateauChannel;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox compoundBAText;
+        private System.Windows.Forms.Label label35;
     }
 }
 

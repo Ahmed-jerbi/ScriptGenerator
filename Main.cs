@@ -27,6 +27,7 @@ namespace JungleDiamond
             public const String AllFiles = "All Files (*.*)|*.*";
             public const String Calibration = "Calibration (*.sps)|*.sps";
             public const String Script = "VIOSO Script (*.ini)|*.ini";
+            public const String Mask = "VIOSO Mask (*.bmp)|*.bmp";
         }
 
         public Main()
@@ -119,14 +120,35 @@ namespace JungleDiamond
                         activePanel.Controls.Add(ExportBox);
                         ExportBox.Visible = true;
                         ExportBox.Location = new Point(0, 0);
+
+                        expFormatBox.SelectedIndex = 0;
+                        expPath.Text = ViosoFolders.Root + ViosoFolders.Export;
+
                         break;
                     case "Observer Correction":
                         activePanel.Controls.Clear();
-                        activePanel.Controls.Add(observerCorrection);
-                        observerCorrection.Visible = true;
-                        observerCorrection.Location = new Point(0, 0);
+                        activePanel.Controls.Add(ObserverCorrectionBox);
+                        ObserverCorrectionBox.Visible = true;
+                        ObserverCorrectionBox.Location = new Point(0, 0);
                         break;
-
+                    case "Set Mask from File":
+                        activePanel.Controls.Clear();
+                        activePanel.Controls.Add(MaskBox);
+                        MaskBox.Visible = true;
+                        MaskBox.Location = new Point(0, 0);
+                        break;
+                    case "Color Adjustment":
+                        activePanel.Controls.Clear();
+                        activePanel.Controls.Add(ColorAdjustmentBox);
+                        ColorAdjustmentBox.Visible = true;
+                        ColorAdjustmentBox.Location = new Point(0, 0);
+                        break;
+                    case "Blending Adjustment":
+                        activePanel.Controls.Clear();
+                        activePanel.Controls.Add(BlendingAdjustmentBox);
+                        BlendingAdjustmentBox.Visible = true;
+                        BlendingAdjustmentBox.Location = new Point(0, 0);
+                        break;
                     default:
                         activePanel.Controls.Clear();
                         Console.WriteLine("No Valid Selection");
@@ -321,31 +343,56 @@ namespace JungleDiamond
 
                     break;
                 case "Export":
+                        String expCompound = compoundExpText.Text;
+                        Boolean useExportScript = expIsUseSettingsFile.Checked;
+                        String expFormat = expFormatBox.SelectedItem.ToString();
+                        String expSplitDisplay = expIsSplitDisplay.Checked ? "1" : "0";
+                        String exp3D = expIs3D.Checked ? "1" : "0";
+                        String fullPath = expPath.Text + @"\" + expName.Text;
 
-                    String fullPath = expPath.Text + @"\" + expName.Text + "." + expFormat.Text;
-
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                    lvi.SubItems.Add(compoundExpText.Text + ", " + fullPath);
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        if (useExportScript) {
+                            lvi.SubItems.Add(expCompound + ", Use Export Script file = " + useExportScript);
+                        } else {
+                            lvi.SubItems.Add(expCompound + ", Dest.:" + fullPath + ", Format: " + expFormat + ", 3D=" + exp3D + ", SplitDisplay=" + expSplitDisplay);
+                        }
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
   
-                    //XML Elements
-                    //Task
-                    xdoc.Root.Add(new XComment("Export Block"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Export1"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "export")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "Interact.Export")));
-                    xdoc.Root.Add(new XElement("taks", new XAttribute("action", "configure"), new XAttribute("name", "Export1"), new XAttribute("state", "ExportConfig"),
-                                    new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundExpText.Text)),
-                                    new XElement("param", new XAttribute("tConvert", expFormat.Text), new XAttribute("path", expPath.Text), new XAttribute("name", expName.Text), new XAttribute("bSplitDisplays", "1"), new XAttribute("bExactFileName", "1"))
-                                  ));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "Export1")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "finished")));
-                        
-                    break;
+                        //XML Elements
+                        //Task
+                        xdoc.Root.Add(new XComment("Export Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Export1"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "export")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "Interact.Export")));
+                        xdoc.Root.Add(new XElement("taks", new XAttribute("action", "configure"), new XAttribute("name", "Export1"), new XAttribute("state", "ExportConfig"), new XAttribute("use", lvi.Text + ".Export")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "Export1")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "finished")));
+
+                        //define
+                        XElement exportParam = new XElement("param");
+
+                        if (useExportScript) {
+                            exportParam.Add(new XAttribute("bExtendedDefFile", "1"));
+                        } else {
+                            exportParam.Add(new XAttribute("tConvert", expFormatBox.SelectedItem.ToString()),
+                                            new XAttribute("path", expPath.Text),
+                                            new XAttribute("name", expName.Text),
+                                            new XAttribute("bSplitDisplays", expSplitDisplay),
+                                            new XAttribute("b3D", exp3D),
+                                            new XAttribute("bExactFileName", "1")
+                                            );
+                        }
+
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Export"), new XAttribute("type", "CalibCommerce"),
+                                        new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundExpText.Text)),
+                                        exportParam
+                            ));
+                                      
+                        break;
                  case "Observer Correction":
                         String ocDisplay = displayOCText.Text;
                         String ocViewport = viewportOCText.Text;
@@ -380,6 +427,94 @@ namespace JungleDiamond
                                            new XElement("param0", new XAttribute("X", scaleHorizontal), new XAttribute("Y", offsetHorizontal), new XAttribute("Z", scaleVertical), new XAttribute("W", offsetVertical))
                             ));
 
+                        break;
+
+                    case "Set Mask from File":
+                        //check .bmp in file(s) name(s)
+                        if (!maskFileText.Text.EndsWith(".bmp")) maskFileText.Text += ".bmp";
+
+
+                        String mCompound = compoundMaskText.Text;
+                        String mDisplay = displayMaskText.Text;
+                        String mMaskFile = maskFileText.Text;
+
+
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(mCompound + ", " + mDisplay + ", File: " + mMaskFile);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+
+                        //XML Element
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "manipulate"), new XAttribute("type", "calibration"), new XAttribute("subtype", "CalibChange"), new XAttribute("use", lvi.Text + ".Mask")));
+
+                        //define
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Mask"), new XAttribute("type", "CalibChange"),
+                                            new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", mCompound)),
+                                            new XElement("param", new XAttribute("bAABorder", "0")),
+                                            new XElement("change", new XAttribute("tManipulate", "set mask"), new XAttribute("tDevice", "sd"), new XAttribute("name", mDisplay), new XAttribute("maskFile", mMaskFile))
+                            ));
+                        break;
+                    case "Color Adjustment":
+                        String caCompound = compoundCAText.Text;
+                        String caDisplay = displayCAText.Text;
+                        float caRChannel = Decimal.ToSingle(rChannel.Value) / 255;
+                        float caGChannel = Decimal.ToSingle(gChannel.Value) / 255;
+                        float caBChannel = Decimal.ToSingle(bChannel.Value) / 255;
+
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(caCompound + ", " + caDisplay + ", R:" + caRChannel + ", G: " + caGChannel + ", B: " + caBChannel);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+
+                        //XML Element
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "manipulate"), new XAttribute("type", "calibration"), new XAttribute("subtype", "CalibChange"), new XAttribute("use", lvi.Text + ".CA")));
+                        
+                        //define
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".CA"), new XAttribute("type", "CalibChange"),
+                                            new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", caCompound)),
+                                            new XElement("param", new XAttribute("bAABorder", "0")),
+                                            new XElement("change", new XAttribute("tManipulate", "power value"), new XAttribute("tDevice", "sd"), new XAttribute("name", caDisplay), new XAttribute("red", caRChannel), new XAttribute("green", caGChannel), new XAttribute("blue", caBChannel))
+                            ));
+
+                        break;
+                    case "Blending Adjustment":
+                        String baCompound = compoundBAText.Text;
+                        String baPlateauChannel = plateauChannel.Value.ToString();
+                        String baGradientChannel = gradientChannel.Value.ToString();
+                        String baGammaChannel = gammaChannel.Value.ToString();
+                        String baProjectionChannel = projectionChannel.Value.ToString();
+
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(baCompound + ", Plateau:" + baPlateauChannel + ", Gradient: " + baGradientChannel + ", Gamma: " + baGammaChannel + ", Projection: " + baProjectionChannel);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+
+                        //XML Element
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "manipulate"), new XAttribute("type", "calibration"), new XAttribute("subtype", "blending"), new XAttribute("use", lvi.Text + ".BA")));
+
+                        //define
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".BA"), new XAttribute("type", "BlendParam"),
+                                            new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", baCompound)),
+                                            new XElement("param", 
+                                                new XAttribute("tMethod", "standard"),
+                                                new XAttribute("plateau", baPlateauChannel),
+                                                new XAttribute("gradient", baGradientChannel),
+                                                new XAttribute("gamma", baGammaChannel),
+                                                new XAttribute("gammaPrj", baProjectionChannel)
+                                            )
+                        ));
                         break;
 
                 default:
@@ -453,9 +588,9 @@ namespace JungleDiamond
         /// </summary>
         /// <param name="selectedFile">File name</param>
         /// <returns>true, if a file is selected</returns>
-        private bool showSelectFileDialog(ref String selectedFile, String viosoFolder)
+        private bool showSelectFileDialog(ref String selectedFile, String viosoFilter, String viosoFolder = "")
         {
-            openFileDialog1.Filter = ViosoFilters.Calibration + "|" + ViosoFilters.AllFiles;
+            openFileDialog1.Filter = viosoFilter + "|" + ViosoFilters.AllFiles;
             openFileDialog1.FileName = "";
             openFileDialog1.InitialDirectory = ViosoFolders.Root + viosoFolder;
             DialogResult dialogResult = openFileDialog1.ShowDialog();
@@ -507,7 +642,7 @@ namespace JungleDiamond
         private void btnLoad_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
-            if (showSelectFileDialog(ref selectedFile, ViosoFolders.Calibration))
+            if (showSelectFileDialog(ref selectedFile, ViosoFilters.Calibration, ViosoFolders.Calibration))
             {
                 loadText.Text = selectedFile;
             }
@@ -520,7 +655,7 @@ namespace JungleDiamond
         private void btnBrowseSourceTransfer_Click(object sender, EventArgs e)
         {
             String selectedFile = String.Empty;
-            if (showSelectFileDialog(ref selectedFile, ViosoFolders.Calibration))
+            if (showSelectFileDialog(ref selectedFile, ViosoFilters.Calibration, ViosoFolders.Calibration))
             {
                 srcText.Text = selectedFile;
             }
@@ -553,6 +688,26 @@ namespace JungleDiamond
             {
                 saveText.Text = saveFile;
             }
+        }
+
+        private void btnSetMask_Click(object sender, EventArgs e)
+        {
+            String selectedMaskFile = String.Empty;
+            if (showSelectFileDialog(ref selectedMaskFile, ViosoFilters.Mask)) {
+                maskFileText.Text = selectedMaskFile;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Boolean isEnabled = !expIsUseSettingsFile.Checked;
+
+            expFormatBox.Enabled = isEnabled;
+            expIs3D.Enabled = isEnabled;
+            expIsSplitDisplay.Enabled = isEnabled;
+            expName.Enabled = isEnabled;
+            expPath.Enabled = isEnabled;
+            btnSelectExportDestination.Enabled = isEnabled;
         }
     }
 }
