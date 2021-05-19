@@ -78,6 +78,10 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.resetButton = new System.Windows.Forms.Button();
             this.RecalBlendBox = new System.Windows.Forms.GroupBox();
+            this.projectionArrangementBox = new System.Windows.Forms.ComboBox();
+            this.newCompoundBlendText = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.compoundBlendText = new System.Windows.Forms.TextBox();
             this.ExportBox = new System.Windows.Forms.GroupBox();
@@ -143,10 +147,6 @@
             this.label36 = new System.Windows.Forms.Label();
             this.compoundBAText = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.newCompoundBlendText = new System.Windows.Forms.TextBox();
-            this.projectionArrangementBox = new System.Windows.Forms.ComboBox();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -722,6 +722,49 @@
             this.RecalBlendBox.TabStop = false;
             this.RecalBlendBox.Text = "Recalculate Blending [3D]";
             this.RecalBlendBox.Visible = false;
+            // 
+            // projectionArrangementBox
+            // 
+            this.projectionArrangementBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.projectionArrangementBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.projectionArrangementBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.projectionArrangementBox.FormattingEnabled = true;
+            this.projectionArrangementBox.Items.AddRange(new object[] {
+            "Auto",
+            "Horizontal",
+            "Vertical",
+            "Grid"});
+            this.projectionArrangementBox.Location = new System.Drawing.Point(15, 93);
+            this.projectionArrangementBox.Name = "projectionArrangementBox";
+            this.projectionArrangementBox.Size = new System.Drawing.Size(121, 21);
+            this.projectionArrangementBox.TabIndex = 11;
+            // 
+            // newCompoundBlendText
+            // 
+            this.newCompoundBlendText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.newCompoundBlendText.ForeColor = System.Drawing.SystemColors.Window;
+            this.newCompoundBlendText.Location = new System.Drawing.Point(15, 140);
+            this.newCompoundBlendText.Name = "newCompoundBlendText";
+            this.newCompoundBlendText.Size = new System.Drawing.Size(206, 22);
+            this.newCompoundBlendText.TabIndex = 10;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(12, 123);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(123, 13);
+            this.label42.TabIndex = 9;
+            this.label42.Text = "New Compound Name";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(12, 74);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(129, 13);
+            this.label41.TabIndex = 8;
+            this.label41.Text = "Projection Arrangement";
             // 
             // label16
             // 
@@ -1466,55 +1509,12 @@
             this.label35.TabIndex = 0;
             this.label35.Text = "Compound Name";
             // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(12, 74);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(129, 13);
-            this.label41.TabIndex = 8;
-            this.label41.Text = "Projection Arrangement";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(12, 123);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(123, 13);
-            this.label42.TabIndex = 9;
-            this.label42.Text = "New Compound Name";
-            // 
-            // newCompoundBlendText
-            // 
-            this.newCompoundBlendText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.newCompoundBlendText.ForeColor = System.Drawing.SystemColors.Window;
-            this.newCompoundBlendText.Location = new System.Drawing.Point(15, 140);
-            this.newCompoundBlendText.Name = "newCompoundBlendText";
-            this.newCompoundBlendText.Size = new System.Drawing.Size(206, 22);
-            this.newCompoundBlendText.TabIndex = 10;
-            // 
-            // projectionArrangementBox
-            // 
-            this.projectionArrangementBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.projectionArrangementBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.projectionArrangementBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.projectionArrangementBox.FormattingEnabled = true;
-            this.projectionArrangementBox.Items.AddRange(new object[] {
-            "Auto",
-            "Horizontal",
-            "Vertical",
-            "Grid"});
-            this.projectionArrangementBox.Location = new System.Drawing.Point(15, 93);
-            this.projectionArrangementBox.Name = "projectionArrangementBox";
-            this.projectionArrangementBox.Size = new System.Drawing.Size(121, 21);
-            this.projectionArrangementBox.TabIndex = 11;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1381, 715);
+            this.ClientSize = new System.Drawing.Size(1059, 471);
             this.Controls.Add(this.BlendingAdjustmentBox);
             this.Controls.Add(this.ExportBox);
             this.Controls.Add(this.ColorAdjustmentBox);
