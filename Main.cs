@@ -47,11 +47,11 @@ namespace JungleDiamond
             public const String CopyTransfer = "Copy/Transfer";
             public const String Wait = "Wait";
             public const String Recalibrate = "Recalibrate";
-            public const String Recalculate3DBlending = "Recalibrate Blending[3D]";
+            public const String Recalculate3DBlending = "Recalculate Blending[3D]";
             public const String AddVC = "Add VC to display Geometry";
             public const String CustomContentSpace = "Custom content space conversion";
             public const String ObserverCorrection = "Observer Correction";
-            public const String SetMask = "Set Mask from File";
+            public const String SetMask = "Set Display Mask";
             public const String ColorAdjustment = "Color Adjustment";
             public const String BlendingAdjustment = "Blending Adjustment";
             public const String Export = "Export";
@@ -123,6 +123,9 @@ namespace JungleDiamond
                         break;
                     case ViosoFunctions.Recalculate3DBlending:
                         enableFunctionBox(RecalBlendBox);
+
+                        projectionArrangementBox.SelectedIndex = 0;
+
                         break;
                     case ViosoFunctions.AddVC:
                         enableFunctionBox(AddVcBox);
@@ -183,52 +186,52 @@ namespace JungleDiamond
                 switch (functionBox.SelectedItem.ToString())
             {
                 case ViosoFunctions.Load:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                        //check .sps in file(s) name(s)
-                    if (!loadText.Text.EndsWith(".sps")) loadText.Text += ".sps";
-                    lvi.SubItems.Add(loadText.Text);
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
-                    //XML elements
-                    xdoc.Root.Add(new XComment("Loading Block"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "load"), new XAttribute("name", "Calib"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text + ".Load")));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Load"), new XAttribute("type", "common"),
-                        new XElement("param", new XAttribute("file", loadText.Text))));
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                            //check .sps in file(s) name(s)
+                        if (!loadText.Text.EndsWith(".sps")) loadText.Text += ".sps";
+                        lvi.SubItems.Add(loadText.Text);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+                        //XML elements
+                        xdoc.Root.Add(new XComment("Loading Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "load"), new XAttribute("name", "Calib"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text + ".Load")));
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Load"), new XAttribute("type", "common"),
+                            new XElement("param", new XAttribute("file", loadText.Text))));
                     break;
 
                 case ViosoFunctions.CopyTransfer:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                        //check .sps in file(s) name(s)
-                    if (!srcText.Text.EndsWith(".sps")) srcText.Text += ".sps";
-                    if (!destText.Text.EndsWith(".sps")) destText.Text += ".sps";
-                    lvi.SubItems.Add(srcText.Text + " --> "+ destText.Text);
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
-                    //XML elements
-                    xdoc.Root.Add(new XComment("Transfer Block"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "transfer"), new XAttribute("type", "file"), new XAttribute("use", lvi.Text + ".Transfer")));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Transfer"), new XAttribute("type", "transfer"),
-                            new XElement("from", new XAttribute("file", srcText.Text)),
-                            new XElement("to", new XAttribute("file", destText.Text))));
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                            //check .sps in file(s) name(s)
+                        if (!srcText.Text.EndsWith(".sps")) srcText.Text += ".sps";
+                        if (!destText.Text.EndsWith(".sps")) destText.Text += ".sps";
+                        lvi.SubItems.Add(srcText.Text + " --> "+ destText.Text);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+                        //XML elements
+                        xdoc.Root.Add(new XComment("Transfer Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "transfer"), new XAttribute("type", "file"), new XAttribute("use", lvi.Text + ".Transfer")));
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Transfer"), new XAttribute("type", "transfer"),
+                                new XElement("from", new XAttribute("file", srcText.Text)),
+                                new XElement("to", new XAttribute("file", destText.Text))));
                     break;
 
                 case ViosoFunctions.Wait:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                    lvi.SubItems.Add(waitDuration.Text + " ms");
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(waitDuration.Text + " ms");
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
                         // XML elements
                         xdoc.Root.Add(new XComment("Waiting Block"));
                         xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "Timer"), new XAttribute("subtype", "Sleep"), new XAttribute("use", lvi.Text + ".Sleep")));
@@ -237,118 +240,149 @@ namespace JungleDiamond
                         break;
 
                 case ViosoFunctions.Save:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                        //check .sps in file(s) name(s)
-                    if (!saveText.Text.EndsWith(".sps")) saveText.Text += ".sps";
-                    lvi.SubItems.Add(saveText.Text);
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
-                    //clear panel
-                    activePanel.Controls.Clear();
-                    //XML elements
-                    xdoc.Root.Add(new XComment("Saving Block"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "save"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text + ".Save")));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Save"), new XAttribute("type", "common"),
-                        new XElement("param", new XAttribute("file", saveText.Text))));
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                            //check .sps in file(s) name(s)
+                        if (!saveText.Text.EndsWith(".sps")) saveText.Text += ".sps";
+                        lvi.SubItems.Add(saveText.Text);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+                        //clear panel
+                        activePanel.Controls.Clear();
+                        //XML elements
+                        xdoc.Root.Add(new XComment("Saving Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "save"), new XAttribute("type", "file"), new XAttribute("subtype", "sps"), new XAttribute("use", lvi.Text + ".Save")));
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Save"), new XAttribute("type", "common"),
+                            new XElement("param", new XAttribute("file", saveText.Text))));
                     break;
                 case ViosoFunctions.Recalibrate:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                    lvi.SubItems.Add(compoundRecalText.Text+", [Interaction: "+InteractBox.SelectedItem.ToString()+"]");
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
-                    //XML elements
-                        //tasks
-                    xdoc.Root.Add(new XComment("Recalibration Block"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Recalib"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".Recalibration")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Recalib"), new XAttribute("state", "finished")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
-                        //define
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Recalibration"), new XAttribute("type", "BehaviourCreate"),
-                                new XElement("param", new XAttribute("interactLevel",InteractBox.SelectedItem.ToString())),
-                                new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", compoundRecalText.Text))));
+
+                        String recalCompound = compoundRecalText.Text;
+                        String recalInteractionLevel = String.Empty;
+
+                        switch(InteractBox.SelectedItem.ToString())
+                        {
+                            case "None": recalInteractionLevel = "minimal"; break;
+                            case "Reduced": recalInteractionLevel = "reduced"; break;
+                            case "Minimal": recalInteractionLevel = "less"; break;
+                            case "All": recalInteractionLevel = "many"; break;
+                        }
+
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(recalCompound + ", [Interaction: " + recalInteractionLevel + "]");
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+                        //XML elements
+                            //tasks
+                        xdoc.Root.Add(new XComment("Recalibration Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Recalib"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".Recalibration")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Recalib"), new XAttribute("state", "finished")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+                            //define
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Recalibration"), new XAttribute("type", "BehaviourCreate"),
+                                    new XElement("param", new XAttribute("interactLevel", recalInteractionLevel)),
+                                    new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", recalCompound))));
+
                         break;
                 case ViosoFunctions.Recalculate3DBlending:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                    lvi.SubItems.Add(compoundBlendText.Text);
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
-                    //XML elements
+
+                        String blendCompoundName = compoundBlendText.Text;
+                        String blendNewCompoundName = newCompoundBlendText.Text.Trim();
+                        String blendProjArrangement = String.Empty;
+
+                        if (blendNewCompoundName.Length == 0) blendNewCompoundName = blendCompoundName + "_Reblended";
+
+                        switch (projectionArrangementBox.SelectedItem.ToString())
+                        {
+                            case "Auto": blendProjArrangement = "strip"; break;
+                            case "Horizontal": blendProjArrangement = "hStrip"; break;
+                            case "Vertical": blendProjArrangement = "vStrip"; break;
+                            case "Grid": blendProjArrangement = "grid"; break;
+                        }
+
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(blendCompoundName + ", new name: " + blendNewCompoundName + ", projectionArrangement : " + blendProjArrangement);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+
+                        //XML elements
                         //tasks
-                    xdoc.Root.Add(new XComment("Blending Recalibration [3D] Block"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "BlendCal"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".BlendCalc.Start")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCal"), new XAttribute("state", "Interact.DeviceSel")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "BlendCal"), new XAttribute("state", "DeviceSel"), new XAttribute("use", lvi.Text + ".BlendCalc.Config")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("name", "BlendCalc"), new XAttribute("type", "progress"), new XAttribute("subtype", "next")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCalc"), new XAttribute("state", "finished")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+                        xdoc.Root.Add(new XComment("Blending Recalculate [3D] Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "BlendCal"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".BlendCalc.Start")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCal"), new XAttribute("state", "Interact.DeviceSel")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "BlendCal"), new XAttribute("state", "DeviceSel"), new XAttribute("use", lvi.Text + ".BlendCalc.Config")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("name", "BlendCalc"), new XAttribute("type", "progress"), new XAttribute("subtype", "next")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCalc"), new XAttribute("state", "finished")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+                        
                         //define
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".BlendCalc.Start"), new XAttribute("type", "BehaviourCreate"),
-                                new XElement("param", new XAttribute("interactLevel", "many,noFinalResult")),
-                                new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", compoundBlendText.Text))));
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".BlendCalc.Config"), new XAttribute("type", "SC_DevSel"),
-                                new XElement("param", new XAttribute("tCalib", "preceeding"), new XAttribute("tArrangement", "hstrip"), new XAttribute("calibName", compoundBlendText.Text+"_Reblended"))));
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".BlendCalc.Start"), new XAttribute("type", "BehaviourCreate"),
+                                    new XElement("param", new XAttribute("interactLevel", "many,noFinalResult")),
+                                    new XElement("display", new XAttribute("tDevice","dc"), new XAttribute("name", blendCompoundName))));
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".BlendCalc.Config"), new XAttribute("type", "SC_DevSel"),
+                                    new XElement("param", new XAttribute("tCalib", "preceeding"), new XAttribute("tArrangement", blendProjArrangement), new XAttribute("calibName", blendNewCompoundName))));
                     break;
                 case ViosoFunctions.AddVC:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                    lvi.SubItems.Add(compoundVCText.Text);
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
-                    //XML elements
-                        //tasks
-                    xdoc.Root.Add(new XComment("Conversion Block: Add VC to display geometry"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "Interact.Convert")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".AddVC")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "AddVCtoP2C")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "finished")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(compoundVCText.Text);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+                        //XML elements
+                            //tasks
+                        xdoc.Root.Add(new XComment("Conversion Block: Add VC to display geometry"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "Interact.Convert")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".AddVC")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "AddVCtoP2C")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "AddVCtoP2C"), new XAttribute("state", "finished")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
 
-                        //define
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".AddVC"), new XAttribute("type", "CalibCommerce"),
-                                     new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundVCText.Text)),
-                                     new XElement("param", new XAttribute("tConvert", "add vc to P2C"))));
+                            //define
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".AddVC"), new XAttribute("type", "CalibCommerce"),
+                                         new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundVCText.Text)),
+                                         new XElement("param", new XAttribute("tConvert", "add vc to P2C"))));
                     break;
                 case ViosoFunctions.CustomContentSpace:
-                    //Nb
-                    lvi.Text = scriptList.Items.Count.ToString();
-                    //Name
-                    lvi.SubItems.Add(functionBox.SelectedItem.ToString());
-                    //argument
-                    lvi.SubItems.Add(compoundCCSText.Text+", Space: "+ccsText.Text);
-                    //--> add the ScriptList
-                    scriptList.Items.Add(lvi);
+                   
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(compoundCCSText.Text+", Space: "+ccsText.Text);
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
 
-                    //XML Elements
-                    //Tasks
-                    xdoc.Root.Add(new XComment("Conversion Block: Custom content space conversion"));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "ContentSpace"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "Interact.Convert")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".CCS_BLOCK")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "ContentSpace")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "finished")));
-                    xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
+                        //XML Elements
+                        //Tasks
+                        xdoc.Root.Add(new XComment("Conversion Block: Custom content space conversion"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "ContentSpace"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "Convert")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "Interact.Convert")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "ConvertConfig"), new XAttribute("use", lvi.Text + ".CCS_BLOCK")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "ContentSpace")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "ContentSpace"), new XAttribute("state", "finished")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
 
-                    //define
-                    xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".CCS_BLOCK"), new XAttribute("type", "CalibCommerce"),
-                                    new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundCCSText.Text)),
-                                    new XElement("param", new XAttribute("tConvert", "custom content space conversion"), new XAttribute("customContentSpace", ccsText.Text))
-                                  ));
+                        //define
+                        xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".CCS_BLOCK"), new XAttribute("type", "CalibCommerce"),
+                                        new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundCCSText.Text)),
+                                        new XElement("param", new XAttribute("tConvert", "custom content space conversion"), new XAttribute("customContentSpace", ccsText.Text))
+                                      ));
 
                     break;
                 case ViosoFunctions.Export:
