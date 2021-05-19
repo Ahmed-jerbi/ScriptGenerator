@@ -449,7 +449,8 @@ namespace JungleDiamond
                         scriptList.Items.Add(lvi);
 
                         //XML Element
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "manipulate"), new XAttribute("type", "calibration"), new XAttribute("subtype", "CalibChange"), new XAttribute("use", lvi.Text + ".Mask")));
+                        xdoc.Root.Add(new XComment("Set Mask from File"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "manipulate"), new XAttribute("type", "calibration"), new XAttribute("subtype", "Mask"), new XAttribute("use", lvi.Text + ".Mask")));
 
                         //define
                         xdoc.Root.Add(new XElement("define", new XAttribute("name", lvi.Text + ".Mask"), new XAttribute("type", "CalibChange"),
@@ -475,6 +476,7 @@ namespace JungleDiamond
                         scriptList.Items.Add(lvi);
 
                         //XML Element
+                        xdoc.Root.Add(new XComment("Calibration Adjustment: Color"));
                         xdoc.Root.Add(new XElement("task", new XAttribute("action", "manipulate"), new XAttribute("type", "calibration"), new XAttribute("subtype", "CalibChange"), new XAttribute("use", lvi.Text + ".CA")));
                         
                         //define
@@ -487,6 +489,7 @@ namespace JungleDiamond
                         break;
                     case "Blending Adjustment":
                         String baCompound = compoundBAText.Text;
+                        String baDisplay = displayBAText.Text;
                         String baPlateauChannel = plateauChannel.Value.ToString();
                         String baGradientChannel = gradientChannel.Value.ToString();
                         String baGammaChannel = gammaChannel.Value.ToString();
@@ -497,11 +500,12 @@ namespace JungleDiamond
                         //Name
                         lvi.SubItems.Add(functionBox.SelectedItem.ToString());
                         //argument
-                        lvi.SubItems.Add(baCompound + ", Plateau:" + baPlateauChannel + ", Gradient: " + baGradientChannel + ", Gamma: " + baGammaChannel + ", Projection: " + baProjectionChannel);
+                        lvi.SubItems.Add(baCompound + ", " + baDisplay + ", Plateau:" + baPlateauChannel + ", Gradient: " + baGradientChannel + ", Gamma: " + baGammaChannel + ", Projection: " + baProjectionChannel);
                         //--> add the ScriptList
                         scriptList.Items.Add(lvi);
 
                         //XML Element
+                        xdoc.Root.Add(new XComment("Calibration Adjustment: Blending"));
                         xdoc.Root.Add(new XElement("task", new XAttribute("action", "manipulate"), new XAttribute("type", "calibration"), new XAttribute("subtype", "blending"), new XAttribute("use", lvi.Text + ".BA")));
 
                         //define

@@ -131,16 +131,18 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.BlendingAdjustmentBox = new System.Windows.Forms.GroupBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.compoundBAText = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.plateauChannel = new System.Windows.Forms.NumericUpDown();
-            this.gradientChannel = new System.Windows.Forms.NumericUpDown();
-            this.gammaChannel = new System.Windows.Forms.NumericUpDown();
             this.projectionChannel = new System.Windows.Forms.NumericUpDown();
+            this.gammaChannel = new System.Windows.Forms.NumericUpDown();
+            this.gradientChannel = new System.Windows.Forms.NumericUpDown();
+            this.plateauChannel = new System.Windows.Forms.NumericUpDown();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.compoundBAText = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.displayBAText = new System.Windows.Forms.TextBox();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -160,10 +162,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gChannel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rChannel)).BeginInit();
             this.BlendingAdjustmentBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectionChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).BeginInit();
             this.SuspendLayout();
             // 
             // fLabel
@@ -1171,6 +1173,11 @@
             this.bChannel.Size = new System.Drawing.Size(96, 22);
             this.bChannel.TabIndex = 9;
             this.bChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.bChannel.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             // 
             // gChannel
             // 
@@ -1186,6 +1193,11 @@
             this.gChannel.Size = new System.Drawing.Size(96, 22);
             this.gChannel.TabIndex = 8;
             this.gChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.gChannel.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             // 
             // rChannel
             // 
@@ -1201,6 +1213,11 @@
             this.rChannel.Size = new System.Drawing.Size(96, 22);
             this.rChannel.TabIndex = 7;
             this.rChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.rChannel.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
             // 
             // label34
             // 
@@ -1267,6 +1284,8 @@
             // 
             // BlendingAdjustmentBox
             // 
+            this.BlendingAdjustmentBox.Controls.Add(this.displayBAText);
+            this.BlendingAdjustmentBox.Controls.Add(this.label40);
             this.BlendingAdjustmentBox.Controls.Add(this.projectionChannel);
             this.BlendingAdjustmentBox.Controls.Add(this.gammaChannel);
             this.BlendingAdjustmentBox.Controls.Add(this.gradientChannel);
@@ -1280,20 +1299,127 @@
             this.BlendingAdjustmentBox.ForeColor = System.Drawing.SystemColors.Window;
             this.BlendingAdjustmentBox.Location = new System.Drawing.Point(1318, 250);
             this.BlendingAdjustmentBox.Name = "BlendingAdjustmentBox";
-            this.BlendingAdjustmentBox.Size = new System.Drawing.Size(229, 208);
+            this.BlendingAdjustmentBox.Size = new System.Drawing.Size(229, 229);
             this.BlendingAdjustmentBox.TabIndex = 25;
             this.BlendingAdjustmentBox.TabStop = false;
             this.BlendingAdjustmentBox.Text = "Blending Adjustment";
             this.BlendingAdjustmentBox.Visible = false;
             // 
-            // label35
+            // projectionChannel
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(7, 16);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(97, 13);
-            this.label35.TabIndex = 0;
-            this.label35.Text = "Compound Name";
+            this.projectionChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.projectionChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.projectionChannel.Location = new System.Drawing.Point(86, 197);
+            this.projectionChannel.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.projectionChannel.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.projectionChannel.Name = "projectionChannel";
+            this.projectionChannel.Size = new System.Drawing.Size(120, 22);
+            this.projectionChannel.TabIndex = 9;
+            this.projectionChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.projectionChannel.Value = new decimal(new int[] {
+            22,
+            0,
+            0,
+            0});
+            // 
+            // gammaChannel
+            // 
+            this.gammaChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.gammaChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.gammaChannel.Location = new System.Drawing.Point(86, 169);
+            this.gammaChannel.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.gammaChannel.Name = "gammaChannel";
+            this.gammaChannel.Size = new System.Drawing.Size(120, 22);
+            this.gammaChannel.TabIndex = 8;
+            this.gammaChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gradientChannel
+            // 
+            this.gradientChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.gradientChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.gradientChannel.Location = new System.Drawing.Point(86, 138);
+            this.gradientChannel.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.gradientChannel.Minimum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            -2147483648});
+            this.gradientChannel.Name = "gradientChannel";
+            this.gradientChannel.Size = new System.Drawing.Size(120, 22);
+            this.gradientChannel.TabIndex = 7;
+            this.gradientChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.gradientChannel.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // plateauChannel
+            // 
+            this.plateauChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.plateauChannel.ForeColor = System.Drawing.SystemColors.Window;
+            this.plateauChannel.Location = new System.Drawing.Point(86, 106);
+            this.plateauChannel.Name = "plateauChannel";
+            this.plateauChannel.Size = new System.Drawing.Size(120, 22);
+            this.plateauChannel.TabIndex = 6;
+            this.plateauChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.plateauChannel.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(7, 199);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(59, 13);
+            this.label39.TabIndex = 5;
+            this.label39.Text = "Projection";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(7, 171);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(45, 13);
+            this.label38.TabIndex = 4;
+            this.label38.Text = "Gamma";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(7, 140);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(52, 13);
+            this.label37.TabIndex = 3;
+            this.label37.Text = "Gradient";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(7, 108);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(45, 13);
+            this.label36.TabIndex = 2;
+            this.label36.Text = "Plateau";
             // 
             // compoundBAText
             // 
@@ -1304,88 +1430,39 @@
             this.compoundBAText.Size = new System.Drawing.Size(196, 22);
             this.compoundBAText.TabIndex = 1;
             // 
-            // label36
+            // label35
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(7, 78);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(45, 13);
-            this.label36.TabIndex = 2;
-            this.label36.Text = "Plateau";
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(7, 16);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(97, 13);
+            this.label35.TabIndex = 0;
+            this.label35.Text = "Compound Name";
             // 
-            // label37
+            // label40
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(7, 110);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(52, 13);
-            this.label37.TabIndex = 3;
-            this.label37.Text = "Gradient";
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(10, 61);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(76, 13);
+            this.label40.TabIndex = 10;
+            this.label40.Text = "Display Name";
             // 
-            // label38
+            // displayBAText
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(7, 141);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(45, 13);
-            this.label38.TabIndex = 4;
-            this.label38.Text = "Gamma";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(7, 169);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(59, 13);
-            this.label39.TabIndex = 5;
-            this.label39.Text = "Projection";
-            // 
-            // plateauChannel
-            // 
-            this.plateauChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.plateauChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.plateauChannel.Location = new System.Drawing.Point(86, 76);
-            this.plateauChannel.Name = "plateauChannel";
-            this.plateauChannel.Size = new System.Drawing.Size(120, 22);
-            this.plateauChannel.TabIndex = 6;
-            this.plateauChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // gradientChannel
-            // 
-            this.gradientChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.gradientChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.gradientChannel.Location = new System.Drawing.Point(86, 108);
-            this.gradientChannel.Name = "gradientChannel";
-            this.gradientChannel.Size = new System.Drawing.Size(120, 22);
-            this.gradientChannel.TabIndex = 7;
-            this.gradientChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // gammaChannel
-            // 
-            this.gammaChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.gammaChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.gammaChannel.Location = new System.Drawing.Point(86, 139);
-            this.gammaChannel.Name = "gammaChannel";
-            this.gammaChannel.Size = new System.Drawing.Size(120, 22);
-            this.gammaChannel.TabIndex = 8;
-            this.gammaChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // projectionChannel
-            // 
-            this.projectionChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.projectionChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.projectionChannel.Location = new System.Drawing.Point(86, 167);
-            this.projectionChannel.Name = "projectionChannel";
-            this.projectionChannel.Size = new System.Drawing.Size(120, 22);
-            this.projectionChannel.TabIndex = 9;
-            this.projectionChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.displayBAText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.displayBAText.ForeColor = System.Drawing.SystemColors.Window;
+            this.displayBAText.Location = new System.Drawing.Point(10, 78);
+            this.displayBAText.Name = "displayBAText";
+            this.displayBAText.Size = new System.Drawing.Size(196, 22);
+            this.displayBAText.TabIndex = 11;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1075, 475);
+            this.ClientSize = new System.Drawing.Size(1061, 473);
             this.Controls.Add(this.BlendingAdjustmentBox);
             this.Controls.Add(this.ExportBox);
             this.Controls.Add(this.ColorAdjustmentBox);
@@ -1447,10 +1524,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.rChannel)).EndInit();
             this.BlendingAdjustmentBox.ResumeLayout(false);
             this.BlendingAdjustmentBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.projectionChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1568,6 +1645,8 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TextBox compoundBAText;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox displayBAText;
+        private System.Windows.Forms.Label label40;
     }
 }
 
