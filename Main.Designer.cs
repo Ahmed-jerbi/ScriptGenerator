@@ -876,9 +876,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(13, 144);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(179, 13);
+            this.label19.Size = new System.Drawing.Size(160, 13);
             this.label19.TabIndex = 15;
-            this.label19.Text = "File Name (without file extension)";
+            this.label19.Text = "File Name (without extension)";
             // 
             // expName
             // 
@@ -984,23 +984,25 @@
             // 
             this.vOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.vOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.vOffsetOCText.Location = new System.Drawing.Point(117, 180);
+            this.vOffsetOCText.Location = new System.Drawing.Point(145, 180);
             this.vOffsetOCText.Name = "vOffsetOCText";
             this.vOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.vOffsetOCText.Size = new System.Drawing.Size(89, 22);
+            this.vOffsetOCText.Size = new System.Drawing.Size(59, 22);
             this.vOffsetOCText.TabIndex = 11;
             this.vOffsetOCText.Text = "0";
+            this.vOffsetOCText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // vScaleOCText
             // 
             this.vScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.vScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.vScaleOCText.Location = new System.Drawing.Point(10, 180);
+            this.vScaleOCText.Location = new System.Drawing.Point(37, 180);
             this.vScaleOCText.Name = "vScaleOCText";
             this.vScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.vScaleOCText.Size = new System.Drawing.Size(87, 22);
+            this.vScaleOCText.Size = new System.Drawing.Size(60, 22);
             this.vScaleOCText.TabIndex = 10;
             this.vScaleOCText.Text = "1";
+            this.vScaleOCText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label26
             // 
@@ -1024,23 +1026,25 @@
             // 
             this.hOffsetOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.hOffsetOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.hOffsetOCText.Location = new System.Drawing.Point(117, 133);
+            this.hOffsetOCText.Location = new System.Drawing.Point(147, 133);
             this.hOffsetOCText.Name = "hOffsetOCText";
             this.hOffsetOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.hOffsetOCText.Size = new System.Drawing.Size(87, 22);
+            this.hOffsetOCText.Size = new System.Drawing.Size(57, 22);
             this.hOffsetOCText.TabIndex = 7;
             this.hOffsetOCText.Text = "0";
+            this.hOffsetOCText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // hScaleOCText
             // 
             this.hScaleOCText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.hScaleOCText.ForeColor = System.Drawing.SystemColors.Window;
-            this.hScaleOCText.Location = new System.Drawing.Point(10, 133);
+            this.hScaleOCText.Location = new System.Drawing.Point(37, 133);
             this.hScaleOCText.Name = "hScaleOCText";
             this.hScaleOCText.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.hScaleOCText.Size = new System.Drawing.Size(87, 22);
+            this.hScaleOCText.Size = new System.Drawing.Size(60, 22);
             this.hScaleOCText.TabIndex = 6;
             this.hScaleOCText.Text = "1";
+            this.hScaleOCText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label24
             // 
@@ -1215,16 +1219,16 @@
             // 
             this.bChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.bChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.bChannel.Location = new System.Drawing.Point(84, 173);
+            this.bChannel.Location = new System.Drawing.Point(94, 171);
             this.bChannel.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.bChannel.Name = "bChannel";
-            this.bChannel.Size = new System.Drawing.Size(96, 22);
+            this.bChannel.Size = new System.Drawing.Size(51, 22);
             this.bChannel.TabIndex = 9;
-            this.bChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.bChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.bChannel.Value = new decimal(new int[] {
             255,
             0,
@@ -1235,16 +1239,16 @@
             // 
             this.gChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.gChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.gChannel.Location = new System.Drawing.Point(84, 145);
+            this.gChannel.Location = new System.Drawing.Point(94, 143);
             this.gChannel.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.gChannel.Name = "gChannel";
-            this.gChannel.Size = new System.Drawing.Size(96, 22);
+            this.gChannel.Size = new System.Drawing.Size(51, 22);
             this.gChannel.TabIndex = 8;
-            this.gChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.gChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gChannel.Value = new decimal(new int[] {
             255,
             0,
@@ -1255,16 +1259,16 @@
             // 
             this.rChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.rChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.rChannel.Location = new System.Drawing.Point(84, 114);
+            this.rChannel.Location = new System.Drawing.Point(94, 115);
             this.rChannel.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
             this.rChannel.Name = "rChannel";
-            this.rChannel.Size = new System.Drawing.Size(96, 22);
+            this.rChannel.Size = new System.Drawing.Size(51, 22);
             this.rChannel.TabIndex = 7;
-            this.rChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.rChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.rChannel.Value = new decimal(new int[] {
             255,
             0,
@@ -1274,7 +1278,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(16, 147);
+            this.label34.Location = new System.Drawing.Point(45, 146);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(38, 13);
             this.label34.TabIndex = 6;
@@ -1283,7 +1287,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(16, 175);
+            this.label33.Location = new System.Drawing.Point(48, 173);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(29, 13);
             this.label33.TabIndex = 5;
@@ -1292,7 +1296,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(16, 116);
+            this.label32.Location = new System.Drawing.Point(50, 121);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(27, 13);
             this.label32.TabIndex = 4;
@@ -1393,7 +1397,7 @@
             this.projectionChannel.Name = "projectionChannel";
             this.projectionChannel.Size = new System.Drawing.Size(120, 22);
             this.projectionChannel.TabIndex = 9;
-            this.projectionChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.projectionChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.projectionChannel.Value = new decimal(new int[] {
             22,
             0,
@@ -1413,13 +1417,13 @@
             this.gammaChannel.Name = "gammaChannel";
             this.gammaChannel.Size = new System.Drawing.Size(120, 22);
             this.gammaChannel.TabIndex = 8;
-            this.gammaChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.gammaChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // gradientChannel
             // 
             this.gradientChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.gradientChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.gradientChannel.Location = new System.Drawing.Point(86, 138);
+            this.gradientChannel.Location = new System.Drawing.Point(86, 141);
             this.gradientChannel.Maximum = new decimal(new int[] {
             120,
             0,
@@ -1433,7 +1437,7 @@
             this.gradientChannel.Name = "gradientChannel";
             this.gradientChannel.Size = new System.Drawing.Size(120, 22);
             this.gradientChannel.TabIndex = 7;
-            this.gradientChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.gradientChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gradientChannel.Value = new decimal(new int[] {
             8,
             0,
@@ -1444,11 +1448,11 @@
             // 
             this.plateauChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
             this.plateauChannel.ForeColor = System.Drawing.SystemColors.Window;
-            this.plateauChannel.Location = new System.Drawing.Point(86, 106);
+            this.plateauChannel.Location = new System.Drawing.Point(86, 113);
             this.plateauChannel.Name = "plateauChannel";
             this.plateauChannel.Size = new System.Drawing.Size(120, 22);
             this.plateauChannel.TabIndex = 6;
-            this.plateauChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.plateauChannel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.plateauChannel.Value = new decimal(new int[] {
             50,
             0,
@@ -1458,7 +1462,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(7, 199);
+            this.label39.Location = new System.Drawing.Point(10, 199);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(59, 13);
             this.label39.TabIndex = 5;
@@ -1467,7 +1471,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(7, 171);
+            this.label38.Location = new System.Drawing.Point(10, 171);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(45, 13);
             this.label38.TabIndex = 4;
@@ -1476,7 +1480,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(7, 140);
+            this.label37.Location = new System.Drawing.Point(10, 143);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(52, 13);
             this.label37.TabIndex = 3;
@@ -1485,7 +1489,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(7, 108);
+            this.label36.Location = new System.Drawing.Point(10, 115);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(45, 13);
             this.label36.TabIndex = 2;
@@ -1514,7 +1518,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1059, 471);
+            this.ClientSize = new System.Drawing.Size(1056, 483);
             this.Controls.Add(this.BlendingAdjustmentBox);
             this.Controls.Add(this.ExportBox);
             this.Controls.Add(this.ColorAdjustmentBox);

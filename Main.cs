@@ -13,7 +13,7 @@ namespace JungleDiamond
     {
         // Declaring global variables
         public XDocument xdoc = new XDocument(new XDeclaration("1.0", "utf-8",null ),new XElement("VIOSO"));
-
+        private bool bAddedCom = false; // bool to check if common xml parameters have been already added
         /// <summary>
         /// Stores all folders of interest for ViosoAnyblend
         /// </summary>
@@ -583,9 +583,10 @@ namespace JungleDiamond
         /// <param name="e"></param>
         private void generateScript_Click(object sender, EventArgs e)
         {
-            //generate common XML elements at the end of document: add Wait 3000
-            if (xdoc.Root.LastNode != null)
+            //generate common XML elements at the end of document: add Wait 3000 (only once)
+            if ((xdoc.Root.LastNode != null) && (!bAddedCom))
             {
+                bAddedCom = true;
                 xdoc.Root.Add(new XComment("Default Waiting Block"));
                 xdoc.Root.LastNode.AddAfterSelf(new XElement("define", new XAttribute("name", "stdWait"), new XAttribute("type", "common"),
                                                 new XElement("param", new XAttribute("duration", "3000"))));
@@ -661,6 +662,7 @@ namespace JungleDiamond
         private void resetButton_Click(object sender, EventArgs e)
         {
             xdoc.Root.RemoveAll();
+            bAddedCom = false;
             scriptList.Items.Clear();
             addButton.Enabled = false;
             activePanel.Controls.Clear();
