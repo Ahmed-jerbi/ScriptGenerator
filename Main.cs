@@ -6,6 +6,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 
 namespace JungleDiamond
 {
@@ -606,7 +607,7 @@ namespace JungleDiamond
                     xdoc.Save(w);
                 }
 
-                //write a .bat file
+                //write .bat file
                 if (MessageBox.Show("Do you also want to generate an executable (.bat) for one-click recalibration?", "Script Successfully Generated ☑", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     string filename = ViosoFolders.Root+ ViosoFolders.Scripting+"\\One-Click Recalibration" +".bat";
@@ -618,6 +619,10 @@ namespace JungleDiamond
                         writer.WriteLine("\"C:\\Program Files\\VIOSO Anyblend 5 VR&SIM\\SPCalibrator\\SPCalibrator64.exe\"" + " /H:\"" + saveFileName + "\" /M ");
                     }
                 }
+
+                //prompt folder of the file created
+                String dir = Path.GetDirectoryName(saveFileName);
+                Process.Start(dir);
             }
 
         }
