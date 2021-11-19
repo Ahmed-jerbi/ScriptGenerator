@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.IO;
 
 namespace JungleDiamond
 {
@@ -319,9 +320,9 @@ namespace JungleDiamond
                         //XML elements
                         //tasks
                         xdoc.Root.Add(new XComment("Blending Recalculate [3D] Block"));
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "BlendCal"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".BlendCalc.Start")));
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCal"), new XAttribute("state", "Interact.DeviceSel")));
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "BlendCal"), new XAttribute("state", "DeviceSel"), new XAttribute("use", lvi.Text + ".BlendCalc.Config")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "BlendCalc"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "SingleClientCalib"), new XAttribute("use", lvi.Text + ".BlendCalc.Start")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCalc"), new XAttribute("state", "Interact.DeviceSel")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "BlendCalc"), new XAttribute("state", "DeviceSel"), new XAttribute("use", lvi.Text + ".BlendCalc.Config")));
                         xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("name", "BlendCalc"), new XAttribute("type", "progress"), new XAttribute("subtype", "next")));
                         xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "BlendCalc"), new XAttribute("state", "finished")));
                         xdoc.Root.Add(new XElement("task", new XAttribute("action", "execute"), new XAttribute("type", "timer"), new XAttribute("subtype", "sleep"), new XAttribute("use", "stdWait")));
@@ -409,11 +410,11 @@ namespace JungleDiamond
                         //XML Elements
                         //Task
                         xdoc.Root.Add(new XComment("Export Block"));
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Export1"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "export")));
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "Interact.Export")));
-                        xdoc.Root.Add(new XElement("taks", new XAttribute("action", "configure"), new XAttribute("name", "Export1"), new XAttribute("state", "ExportConfig"), new XAttribute("use", lvi.Text + ".Export")));
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "Export1")));
-                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export1"), new XAttribute("state", "finished")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "create"), new XAttribute("name", "Export"), new XAttribute("type", "behaviour"), new XAttribute("subtype", "export")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export"), new XAttribute("state", "Interact.Export")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "configure"), new XAttribute("name", "Export"), new XAttribute("state", "ExportConfig"), new XAttribute("use", lvi.Text + ".Export")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "start"), new XAttribute("name", "Export")));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "wait"), new XAttribute("name", "Export"), new XAttribute("state", "finished")));
 
                         //define
                         XElement exportParam = new XElement("param");
@@ -603,6 +604,19 @@ namespace JungleDiamond
                 using (XmlWriter w = XmlWriter.Create(saveFileName, settings))
                 {
                     xdoc.Save(w);
+                }
+
+                //write a .bat file
+                if (MessageBox.Show("Do you also want to generate an executable (.bat) for one-click recalibration?", "Script Successfully Generated ☑", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string filename = ViosoFolders.Root+ ViosoFolders.Scripting+"\\One-Click Recalibration" +".bat";
+                    using (StreamWriter writer = File.CreateText(filename))
+                    {
+                        writer.WriteLine("@echo off");
+                        writer.WriteLine("echo VIOSO Recalibration: Do you want to launch the process?");
+                        writer.WriteLine("pause");
+                        writer.WriteLine("\"C:\\Program Files\\VIOSO Anyblend 5 VR&SIM\\SPCalibrator\\SPCalibrator64.exe\"" + " /H:\"" + saveFileName + "\" /M ");
+                    }
                 }
             }
 
