@@ -97,7 +97,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.compoundExpText = new System.Windows.Forms.TextBox();
-            this.titleLabel = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
@@ -122,7 +122,6 @@
             this.btnSetMask = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ColorAdjustmentBox = new System.Windows.Forms.GroupBox();
             this.bChannel = new System.Windows.Forms.NumericUpDown();
             this.gChannel = new System.Windows.Forms.NumericUpDown();
@@ -147,6 +146,8 @@
             this.label36 = new System.Windows.Forms.Label();
             this.compoundBAText = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.labelDesc = new System.Windows.Forms.Label();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -160,7 +161,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.ObserverCorrectionBox.SuspendLayout();
             this.MaskBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ColorAdjustmentBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bChannel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gChannel)).BeginInit();
@@ -175,11 +175,11 @@
             // fLabel
             // 
             this.fLabel.AutoSize = true;
-            this.fLabel.Location = new System.Drawing.Point(49, 110);
+            this.fLabel.Location = new System.Drawing.Point(54, 89);
             this.fLabel.Name = "fLabel";
-            this.fLabel.Size = new System.Drawing.Size(53, 13);
+            this.fLabel.Size = new System.Drawing.Size(102, 13);
             this.fLabel.TabIndex = 5;
-            this.fLabel.Text = "Function";
+            this.fLabel.Text = "Choose a function";
             // 
             // functionBox
             // 
@@ -202,7 +202,7 @@
             "Color Adjustment",
             "Blending Adjustment",
             "Export"});
-            this.functionBox.Location = new System.Drawing.Point(49, 130);
+            this.functionBox.Location = new System.Drawing.Point(53, 114);
             this.functionBox.Name = "functionBox";
             this.functionBox.Size = new System.Drawing.Size(228, 21);
             this.functionBox.TabIndex = 6;
@@ -210,19 +210,20 @@
             // 
             // scriptList
             // 
-            this.scriptList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(110)))), ((int)(((byte)(160)))));
-            this.scriptList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scriptList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(41)))));
+            this.scriptList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.scriptList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.nbCol,
             this.nameCol,
             this.argCol});
             this.scriptList.ForeColor = System.Drawing.SystemColors.Window;
+            this.scriptList.FullRowSelect = true;
             this.scriptList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.scriptList.HideSelection = false;
             this.scriptList.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.scriptList.Location = new System.Drawing.Point(430, 24);
+            this.scriptList.Location = new System.Drawing.Point(398, 25);
             this.scriptList.Name = "scriptList";
-            this.scriptList.Size = new System.Drawing.Size(610, 366);
+            this.scriptList.Size = new System.Drawing.Size(610, 369);
             this.scriptList.TabIndex = 12;
             this.scriptList.TabStop = false;
             this.scriptList.UseCompatibleStateImageBehavior = false;
@@ -248,21 +249,22 @@
             // activePanel
             // 
             this.activePanel.BackColor = System.Drawing.Color.Transparent;
-            this.activePanel.Location = new System.Drawing.Point(49, 157);
+            this.activePanel.Location = new System.Drawing.Point(53, 148);
             this.activePanel.Name = "activePanel";
-            this.activePanel.Size = new System.Drawing.Size(267, 246);
+            this.activePanel.Size = new System.Drawing.Size(243, 246);
             this.activePanel.TabIndex = 13;
             // 
             // addButton
             // 
-            this.addButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.addButton.BackColor = System.Drawing.Color.Transparent;
             this.addButton.Enabled = false;
-            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(219)))));
+            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(340, 224);
+            this.addButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(219)))));
+            this.addButton.Location = new System.Drawing.Point(311, 204);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(56, 44);
+            this.addButton.Size = new System.Drawing.Size(76, 44);
             this.addButton.TabIndex = 9;
             this.addButton.Text = "Add ";
             this.addButton.UseVisualStyleBackColor = false;
@@ -392,7 +394,7 @@
             this.CopyBox.Controls.Add(this.label5);
             this.CopyBox.Controls.Add(this.srcText);
             this.CopyBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.CopyBox.Location = new System.Drawing.Point(49, 463);
+            this.CopyBox.Location = new System.Drawing.Point(49, 480);
             this.CopyBox.Name = "CopyBox";
             this.CopyBox.Size = new System.Drawing.Size(228, 141);
             this.CopyBox.TabIndex = 16;
@@ -536,9 +538,9 @@
             // 
             this.generateScript.BackColor = System.Drawing.Color.Transparent;
             this.generateScript.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.generateScript.Font = new System.Drawing.Font("Segoe UI Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.generateScript.ForeColor = System.Drawing.Color.White;
-            this.generateScript.Location = new System.Drawing.Point(927, 409);
+            this.generateScript.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generateScript.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(234)))), ((int)(((byte)(169)))));
+            this.generateScript.Location = new System.Drawing.Point(895, 405);
             this.generateScript.Name = "generateScript";
             this.generateScript.Size = new System.Drawing.Size(113, 44);
             this.generateScript.TabIndex = 17;
@@ -697,8 +699,8 @@
             this.resetButton.BackColor = System.Drawing.Color.Transparent;
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetButton.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.resetButton.Location = new System.Drawing.Point(48, 409);
+            this.resetButton.ForeColor = System.Drawing.Color.IndianRed;
+            this.resetButton.Location = new System.Drawing.Point(53, 406);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(54, 44);
             this.resetButton.TabIndex = 19;
@@ -934,16 +936,16 @@
             this.compoundExpText.Size = new System.Drawing.Size(206, 22);
             this.compoundExpText.TabIndex = 0;
             // 
-            // titleLabel
+            // versionLabel
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.titleLabel.Location = new System.Drawing.Point(102, 81);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(186, 20);
-            this.titleLabel.TabIndex = 21;
-            this.titleLabel.Text = "SCRIPT GENERATOR V0000";
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Font = new System.Drawing.Font("Segoe UI Light", 8.25F);
+            this.versionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(234)))), ((int)(((byte)(169)))));
+            this.versionLabel.Location = new System.Drawing.Point(328, 46);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(36, 13);
+            this.versionLabel.TabIndex = 21;
+            this.versionLabel.Text = "V0.0.0";
             // 
             // folderBrowserDialog1
             // 
@@ -1183,16 +1185,6 @@
             this.label27.Size = new System.Drawing.Size(97, 13);
             this.label27.TabIndex = 0;
             this.label27.Text = "Compound Name";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::VIOSOScriptGenerator.Properties.Resources.Logo_VIOSO_trans;
-            this.pictureBox1.Location = new System.Drawing.Point(67, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(249, 54);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
             // 
             // ColorAdjustmentBox
             // 
@@ -1513,20 +1505,43 @@
             this.label35.TabIndex = 0;
             this.label35.Text = "Compound Name";
             // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI Light", 18.25F);
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(219)))));
+            this.titleLabel.Location = new System.Drawing.Point(19, 14);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(355, 35);
+            this.titleLabel.TabIndex = 26;
+            this.titleLabel.Text = "</> VIOSO SCRIPT GENERATOR";
+            // 
+            // labelDesc
+            // 
+            this.labelDesc.AutoSize = true;
+            this.labelDesc.Font = new System.Drawing.Font("Segoe UI Light", 8.5F);
+            this.labelDesc.ForeColor = System.Drawing.Color.Silver;
+            this.labelDesc.Location = new System.Drawing.Point(75, 46);
+            this.labelDesc.Name = "labelDesc";
+            this.labelDesc.Size = new System.Drawing.Size(236, 15);
+            this.labelDesc.TabIndex = 27;
+            this.labelDesc.Text = "Tool to create recalibration scripts (.ini) + (.bat)";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(1056, 483);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(41)))));
+            this.ClientSize = new System.Drawing.Size(1024, 467);
+            this.Controls.Add(this.versionLabel);
+            this.Controls.Add(this.labelDesc);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.BlendingAdjustmentBox);
             this.Controls.Add(this.ExportBox);
             this.Controls.Add(this.ColorAdjustmentBox);
             this.Controls.Add(this.MaskBox);
             this.Controls.Add(this.ObserverCorrectionBox);
             this.Controls.Add(this.LoadBox);
-            this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.RecalBlendBox);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.CCSBox);
@@ -1572,7 +1587,6 @@
             this.ObserverCorrectionBox.PerformLayout();
             this.MaskBox.ResumeLayout(false);
             this.MaskBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ColorAdjustmentBox.ResumeLayout(false);
             this.ColorAdjustmentBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bChannel)).EndInit();
@@ -1643,8 +1657,7 @@
         private System.Windows.Forms.TextBox compoundExpText;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox expName;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Button btnSelectExportDestination;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btnLoad;
@@ -1707,6 +1720,8 @@
         private System.Windows.Forms.TextBox newCompoundBlendText;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label labelDesc;
     }
 }
 
