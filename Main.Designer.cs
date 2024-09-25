@@ -259,6 +259,7 @@
             this.addButton.BackColor = System.Drawing.Color.Transparent;
             this.addButton.Enabled = false;
             this.addButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(219)))));
+            this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(219)))));
@@ -277,7 +278,7 @@
             this.LoadBox.Controls.Add(this.label2);
             this.LoadBox.Controls.Add(this.loadText);
             this.LoadBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.LoadBox.Location = new System.Drawing.Point(847, 481);
+            this.LoadBox.Location = new System.Drawing.Point(753, 469);
             this.LoadBox.Name = "LoadBox";
             this.LoadBox.Size = new System.Drawing.Size(239, 89);
             this.LoadBox.TabIndex = 14;
@@ -487,7 +488,7 @@
             this.saveBox.Controls.Add(this.label10);
             this.saveBox.Controls.Add(this.saveText);
             this.saveBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.saveBox.Location = new System.Drawing.Point(327, 668);
+            this.saveBox.Location = new System.Drawing.Point(283, 653);
             this.saveBox.Name = "saveBox";
             this.saveBox.Size = new System.Drawing.Size(232, 84);
             this.saveBox.TabIndex = 15;
@@ -537,6 +538,7 @@
             // generateScript
             // 
             this.generateScript.BackColor = System.Drawing.Color.Transparent;
+            this.generateScript.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.generateScript.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.generateScript.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.generateScript.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(234)))), ((int)(((byte)(169)))));
@@ -555,7 +557,7 @@
             this.RecalibBox.Controls.Add(this.label12);
             this.RecalibBox.Controls.Add(this.compoundRecalText);
             this.RecalibBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.RecalibBox.Location = new System.Drawing.Point(327, 463);
+            this.RecalibBox.Location = new System.Drawing.Point(283, 463);
             this.RecalibBox.Name = "RecalibBox";
             this.RecalibBox.Size = new System.Drawing.Size(229, 107);
             this.RecalibBox.TabIndex = 16;
@@ -611,7 +613,7 @@
             this.AddVcBox.Controls.Add(this.label14);
             this.AddVcBox.Controls.Add(this.compoundVCText);
             this.AddVcBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.AddVcBox.Location = new System.Drawing.Point(327, 586);
+            this.AddVcBox.Location = new System.Drawing.Point(283, 573);
             this.AddVcBox.Name = "AddVcBox";
             this.AddVcBox.Size = new System.Drawing.Size(229, 75);
             this.AddVcBox.TabIndex = 17;
@@ -644,7 +646,7 @@
             this.CCSBox.Controls.Add(this.label13);
             this.CCSBox.Controls.Add(this.compoundCCSText);
             this.CCSBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.CCSBox.Location = new System.Drawing.Point(849, 583);
+            this.CCSBox.Location = new System.Drawing.Point(753, 559);
             this.CCSBox.Name = "CCSBox";
             this.CCSBox.Size = new System.Drawing.Size(229, 125);
             this.CCSBox.TabIndex = 18;
@@ -697,6 +699,7 @@
             // resetButton
             // 
             this.resetButton.BackColor = System.Drawing.Color.Transparent;
+            this.resetButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.resetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.resetButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetButton.ForeColor = System.Drawing.Color.IndianRed;
@@ -717,7 +720,7 @@
             this.RecalBlendBox.Controls.Add(this.label16);
             this.RecalBlendBox.Controls.Add(this.compoundBlendText);
             this.RecalBlendBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.RecalBlendBox.Location = new System.Drawing.Point(577, 471);
+            this.RecalBlendBox.Location = new System.Drawing.Point(518, 469);
             this.RecalBlendBox.Name = "RecalBlendBox";
             this.RecalBlendBox.Size = new System.Drawing.Size(229, 179);
             this.RecalBlendBox.TabIndex = 18;
@@ -801,7 +804,7 @@
             this.ExportBox.Controls.Add(this.label17);
             this.ExportBox.Controls.Add(this.compoundExpText);
             this.ExportBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.ExportBox.Location = new System.Drawing.Point(1102, 485);
+            this.ExportBox.Location = new System.Drawing.Point(998, 473);
             this.ExportBox.Name = "ExportBox";
             this.ExportBox.Size = new System.Drawing.Size(235, 235);
             this.ExportBox.TabIndex = 19;
@@ -1112,7 +1115,7 @@
             this.MaskBox.Controls.Add(this.label28);
             this.MaskBox.Controls.Add(this.label27);
             this.MaskBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.MaskBox.Location = new System.Drawing.Point(1318, 29);
+            this.MaskBox.Location = new System.Drawing.Point(1300, 29);
             this.MaskBox.Name = "MaskBox";
             this.MaskBox.Size = new System.Drawing.Size(229, 172);
             this.MaskBox.TabIndex = 23;
@@ -1345,7 +1348,7 @@
             this.BlendingAdjustmentBox.Controls.Add(this.compoundBAText);
             this.BlendingAdjustmentBox.Controls.Add(this.label35);
             this.BlendingAdjustmentBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.BlendingAdjustmentBox.Location = new System.Drawing.Point(1318, 250);
+            this.BlendingAdjustmentBox.Location = new System.Drawing.Point(1272, 250);
             this.BlendingAdjustmentBox.Name = "BlendingAdjustmentBox";
             this.BlendingAdjustmentBox.Size = new System.Drawing.Size(229, 229);
             this.BlendingAdjustmentBox.TabIndex = 25;
@@ -1532,7 +1535,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(41)))));
-            this.ClientSize = new System.Drawing.Size(1024, 467);
+            this.ClientSize = new System.Drawing.Size(1030, 469);
             this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.labelDesc);
             this.Controls.Add(this.titleLabel);
