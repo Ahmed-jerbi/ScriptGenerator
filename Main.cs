@@ -167,7 +167,7 @@ namespace JungleDiamond
                         enableFunctionBox(BlendingAdjustmentBox);
                         break;
                     case ViosoFunctions.Shutdown:
-                        //no arguments
+                        activePanel.Controls.Clear();
                         break;
                     default:
                         activePanel.Controls.Clear();

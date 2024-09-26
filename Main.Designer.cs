@@ -951,7 +951,7 @@
             this.versionLabel.AutoSize = true;
             this.versionLabel.Font = new System.Drawing.Font("Segoe UI Light", 8.25F);
             this.versionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(234)))), ((int)(((byte)(169)))));
-            this.versionLabel.Location = new System.Drawing.Point(328, 46);
+            this.versionLabel.Location = new System.Drawing.Point(333, 46);
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(36, 13);
             this.versionLabel.TabIndex = 21;
