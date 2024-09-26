@@ -148,6 +148,12 @@
             this.label35 = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.labelDesc = new System.Windows.Forms.Label();
+            this.LoadVcBox = new System.Windows.Forms.GroupBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.vcFilePathText = new System.Windows.Forms.TextBox();
+            this.compoundVCfileText = new System.Windows.Forms.TextBox();
+            this.btnBrowseVCfile = new System.Windows.Forms.Button();
+            this.label45 = new System.Windows.Forms.Label();
             this.LoadBox.SuspendLayout();
             this.WaitBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.waitDuration)).BeginInit();
@@ -170,6 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).BeginInit();
+            this.LoadVcBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // fLabel
@@ -860,7 +867,7 @@
             this.expIsUseSettingsFile.TabIndex = 17;
             this.expIsUseSettingsFile.Text = "use Export Script";
             this.expIsUseSettingsFile.UseVisualStyleBackColor = true;
-            this.expIsUseSettingsFile.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.expIsUseSettingsFile.CheckedChanged += new System.EventHandler(this.chckBox_exportIsFile_CheckedChanged);
             // 
             // btnSelectExportDestination
             // 
@@ -1348,7 +1355,7 @@
             this.BlendingAdjustmentBox.Controls.Add(this.compoundBAText);
             this.BlendingAdjustmentBox.Controls.Add(this.label35);
             this.BlendingAdjustmentBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.BlendingAdjustmentBox.Location = new System.Drawing.Point(1272, 250);
+            this.BlendingAdjustmentBox.Location = new System.Drawing.Point(1254, 479);
             this.BlendingAdjustmentBox.Name = "BlendingAdjustmentBox";
             this.BlendingAdjustmentBox.Size = new System.Drawing.Size(229, 229);
             this.BlendingAdjustmentBox.TabIndex = 25;
@@ -1530,12 +1537,77 @@
             this.labelDesc.TabIndex = 27;
             this.labelDesc.Text = "Tool to create recalibration scripts (.ini) + (.bat)";
             // 
+            // LoadVcBox
+            // 
+            this.LoadVcBox.Controls.Add(this.label43);
+            this.LoadVcBox.Controls.Add(this.vcFilePathText);
+            this.LoadVcBox.Controls.Add(this.compoundVCfileText);
+            this.LoadVcBox.Controls.Add(this.btnBrowseVCfile);
+            this.LoadVcBox.Controls.Add(this.label45);
+            this.LoadVcBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.LoadVcBox.Location = new System.Drawing.Point(1275, 258);
+            this.LoadVcBox.Name = "LoadVcBox";
+            this.LoadVcBox.Size = new System.Drawing.Size(229, 127);
+            this.LoadVcBox.TabIndex = 24;
+            this.LoadVcBox.TabStop = false;
+            this.LoadVcBox.Text = "Load VC File";
+            this.LoadVcBox.Visible = false;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(10, 73);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(69, 13);
+            this.label43.TabIndex = 6;
+            this.label43.Text = "VC File (.vvc)";
+            // 
+            // vcFilePathText
+            // 
+            this.vcFilePathText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.vcFilePathText.ForeColor = System.Drawing.SystemColors.Window;
+            this.vcFilePathText.Location = new System.Drawing.Point(13, 89);
+            this.vcFilePathText.Name = "vcFilePathText";
+            this.vcFilePathText.Size = new System.Drawing.Size(125, 22);
+            this.vcFilePathText.TabIndex = 5;
+            // 
+            // compoundVCfileText
+            // 
+            this.compoundVCfileText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.compoundVCfileText.ForeColor = System.Drawing.SystemColors.Window;
+            this.compoundVCfileText.Location = new System.Drawing.Point(13, 41);
+            this.compoundVCfileText.Name = "compoundVCfileText";
+            this.compoundVCfileText.Size = new System.Drawing.Size(191, 22);
+            this.compoundVCfileText.TabIndex = 3;
+            // 
+            // btnBrowseVCfile
+            // 
+            this.btnBrowseVCfile.BackColor = System.Drawing.Color.Transparent;
+            this.btnBrowseVCfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowseVCfile.Location = new System.Drawing.Point(144, 89);
+            this.btnBrowseVCfile.Name = "btnBrowseVCfile";
+            this.btnBrowseVCfile.Size = new System.Drawing.Size(62, 23);
+            this.btnBrowseVCfile.TabIndex = 2;
+            this.btnBrowseVCfile.Text = "Browse";
+            this.btnBrowseVCfile.UseVisualStyleBackColor = false;
+            this.btnBrowseVCfile.Click += new System.EventHandler(this.btnBrowseVCfile_Click);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(10, 22);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(97, 13);
+            this.label45.TabIndex = 0;
+            this.label45.Text = "Compound Name";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(41)))));
-            this.ClientSize = new System.Drawing.Size(1024, 466);
+            this.ClientSize = new System.Drawing.Size(1034, 466);
+            this.Controls.Add(this.LoadVcBox);
             this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.labelDesc);
             this.Controls.Add(this.titleLabel);
@@ -1601,6 +1673,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gammaChannel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradientChannel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.plateauChannel)).EndInit();
+            this.LoadVcBox.ResumeLayout(false);
+            this.LoadVcBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1725,6 +1799,12 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label labelDesc;
+        private System.Windows.Forms.GroupBox LoadVcBox;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox vcFilePathText;
+        private System.Windows.Forms.TextBox compoundVCfileText;
+        private System.Windows.Forms.Button btnBrowseVCfile;
+        private System.Windows.Forms.Label label45;
     }
 }
 

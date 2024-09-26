@@ -39,6 +39,7 @@ namespace JungleDiamond
             public const String Calibration = "Calibration (*.sps)|*.sps";
             public const String Script = "VIOSO Script (*.ini)|*.ini";
             public const String Mask = "VIOSO Mask (*.bmp)|*.bmp";
+            public const String VC = "VIOSO VC (*.vcc)|*.vvc";
         }
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace JungleDiamond
             public const String Recalibrate = "Recalibrate";
             public const String Recalculate3DBlending = "Recalculate Blending[3D]";
             public const String AddVC = "Add VC to display Geometry";
+            public const String LoadVC = "Load VC file";
             public const String CustomContentSpace = "Custom content space conversion";
             public const String ObserverCorrection = "Observer Correction";
             public const String SetMask = "Set Display Mask";
@@ -85,6 +87,7 @@ namespace JungleDiamond
             functionBox.Items.Add(ViosoFunctions.Recalibrate);
             functionBox.Items.Add(ViosoFunctions.Recalculate3DBlending);
             functionBox.Items.Add(ViosoFunctions.AddVC);
+            functionBox.Items.Add(ViosoFunctions.LoadVC);
             functionBox.Items.Add(ViosoFunctions.CustomContentSpace);
             functionBox.Items.Add(ViosoFunctions.ObserverCorrection);
             functionBox.Items.Add(ViosoFunctions.SetMask);
@@ -137,6 +140,9 @@ namespace JungleDiamond
                         break;
                     case ViosoFunctions.AddVC:
                         enableFunctionBox(AddVcBox);
+                        break;
+                    case ViosoFunctions.LoadVC:
+                        enableFunctionBox(LoadVcBox);
                         break;
                     case ViosoFunctions.CustomContentSpace:
                         enableFunctionBox(CCSBox);
@@ -368,6 +374,27 @@ namespace JungleDiamond
                                          new XElement("display", new XAttribute("tDevice", "dc"), new XAttribute("name", compoundVCText.Text)),
                                          new XElement("param", new XAttribute("tConvert", "add vc to P2C"))));
                     break;
+
+                case ViosoFunctions.LoadVC:
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add(vcFilePathText.Text);
+                        //--> add to the ScriptList
+                        scriptList.Items.Add(lvi);
+                        //XML elements - all in the task element, no define
+                        xdoc.Root.Add(new XComment("Load VC File Block"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "load"),
+                            new XAttribute("name", "LoadVCfile"+ lvi.Text),  //incremental name to allow multiple blocks
+                            new XAttribute("type", "file"), 
+                            new XAttribute("subtype", "vc"),
+                                new XElement("param", new XAttribute("file", vcFilePathText.Text)),
+                                new XElement("display",new XAttribute("tDevice", "dc"), new XAttribute("name", compoundVCfileText.Text))
+                            ));
+                        break;
+
                 case ViosoFunctions.CustomContentSpace:
                    
                         //Nb
@@ -802,7 +829,7 @@ namespace JungleDiamond
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void chckBox_exportIsFile_CheckedChanged(object sender, EventArgs e)
         {
             Boolean isEnabled = !expIsUseSettingsFile.Checked;
 
@@ -812,6 +839,15 @@ namespace JungleDiamond
             expName.Enabled = isEnabled;
             expPath.Enabled = isEnabled;
             btnSelectExportDestination.Enabled = isEnabled;
+        }
+
+        private void btnBrowseVCfile_Click(object sender, EventArgs e)
+        {
+            String selectedVCFile = String.Empty;
+            if (showSelectFileDialog(ref selectedVCFile, ViosoFilters.VC,ViosoFolders.Calibration))
+            {
+                vcFilePathText.Text = selectedVCFile;
+            }
         }
     }
 }
