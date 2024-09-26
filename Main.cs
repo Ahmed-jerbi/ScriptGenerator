@@ -59,6 +59,7 @@ namespace JungleDiamond
             public const String ColorAdjustment = "Color Adjustment";
             public const String BlendingAdjustment = "Blending Adjustment";
             public const String Export = "Export";
+            public const String Shutdown = "Shutdown";
         }
 
         public Main()
@@ -90,6 +91,8 @@ namespace JungleDiamond
             functionBox.Items.Add(ViosoFunctions.ColorAdjustment);
             functionBox.Items.Add(ViosoFunctions.BlendingAdjustment);
             functionBox.Items.Add(ViosoFunctions.Export);
+            functionBox.Items.Add(ViosoFunctions.Shutdown);
+
 
         }
 
@@ -156,6 +159,9 @@ namespace JungleDiamond
                         break;
                     case ViosoFunctions.BlendingAdjustment:
                         enableFunctionBox(BlendingAdjustmentBox);
+                        break;
+                    case ViosoFunctions.Shutdown:
+                        //no arguments
                         break;
                     default:
                         activePanel.Controls.Clear();
@@ -568,8 +574,22 @@ namespace JungleDiamond
                                             )
                         ));
                         break;
+                    
+                    case ViosoFunctions.Shutdown:
+                        //Nb
+                        lvi.Text = scriptList.Items.Count.ToString();
+                        //Name
+                        lvi.SubItems.Add(functionBox.SelectedItem.ToString());
+                        //argument
+                        lvi.SubItems.Add("-");
+                        //--> add the ScriptList
+                        scriptList.Items.Add(lvi);
+                        // XML elements
+                        xdoc.Root.Add(new XComment("Shutdown VIOSO"));
+                        xdoc.Root.Add(new XElement("task", new XAttribute("action", "Execute"), new XAttribute("type", "App"), new XAttribute("subtype", "Shutdown")));
+                        break;
 
-                default:
+                    default:
                     Console.WriteLine("No Valid Selection");
                     break;
             }

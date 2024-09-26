@@ -1459,9 +1459,9 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(10, 199);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(59, 13);
+            this.label39.Size = new System.Drawing.Size(57, 13);
             this.label39.TabIndex = 5;
-            this.label39.Text = "Projection";
+            this.label39.Text = "PJ Gamma";
             // 
             // label38
             // 
@@ -1535,7 +1535,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(41)))));
-            this.ClientSize = new System.Drawing.Size(1030, 469);
+            this.ClientSize = new System.Drawing.Size(1024, 466);
             this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.labelDesc);
             this.Controls.Add(this.titleLabel);
