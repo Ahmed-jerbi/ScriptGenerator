@@ -1,0 +1,30 @@
+=============================================
+VIOSO SCRIPT GENERATOR
+=============================================
+V1.3
+27-09-2024
+
++ Update to V6 paths
++ add functions: load vc file, shutdown
++ UI update 
+
+-------------------------------------------------
+V1.2
+19-11-2021
+
++ Generate .bat file for one-click recal
++ Prompt directory of scripts created at the end
++ bug fixes
+
+-------------------------------------------------
+
+V1.1
+31-05-2021
+
++ Observer conversion function
++ Set Display Mask function
++ Blending Adjustment function
++ Export from extended script option
+
++ Fixed stdWait duplication when generating a script multiple times.
++ Minor UI improvements
